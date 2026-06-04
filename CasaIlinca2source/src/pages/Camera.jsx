@@ -1,0 +1,39 @@
+import { Link, useParams } from 'react-router-dom'
+import Nav from '../components/Nav'
+import { media } from '../media'
+
+const cameraData = {
+  1: { title: 'Camera 1', spec: 'Pat Matrimonial', img: 'cam1_1.jpg', video: 'vid1.mp4', poster: 'cam1_2.JPG' },
+  2: { title: 'Camera 2', spec: 'Pat Matrimonial', img: 'cam2_1.jpg', video: 'vid2.mp4', poster: 'cam2_2.jpg' },
+  3: { title: 'Camera 3', spec: 'Pat Matrimonial', img: 'cam3_1.jpg', video: 'vid3.mp4', poster: 'cam3_2.HEIC' },
+  4: { title: 'Camera 4', spec: 'Pat Matrimonial', img: 'cam4_1.jpg', video: 'vid4.mp4', poster: 'cam4_2.HEIC' },
+}
+
+export default function Camera() {
+  const { id } = useParams()
+  const cam = cameraData[id]
+  if (!cam) return <p style={{ padding: 40 }}>Camera inexistentă.</p>
+
+  return (
+    <>
+      <div className="page" style={{ maxWidth: 1200 }}>
+        <Link to="/camere" className="back-btn"><i className="fas fa-arrow-left" /> Camere</Link>
+        <h1>{cam.title}</h1>
+        <p style={{ color: 'var(--accent)', fontSize: '0.9rem', marginBottom: 30, display: 'flex', alignItems: 'center', gap: 8 }}>
+          <i className="fas fa-bed" /> {cam.spec}
+        </p>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 28 }}>
+          <div style={{ borderRadius: 35, overflow: 'hidden', border: '1px solid var(--border)', boxShadow: '0 15px 40px rgba(0,0,0,0.1)', aspectRatio: '4/5' }}>
+            <img src={media(cam.img)} alt={cam.title} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+          </div>
+          <div style={{ borderRadius: 35, overflow: 'hidden', border: '1px solid var(--border)', boxShadow: '0 15px 40px rgba(0,0,0,0.1)', aspectRatio: '9/16', background: '#000' }}>
+            <video autoPlay muted loop playsInline controls poster={media(cam.poster)} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}>
+              <source src={media(cam.video)} type="video/mp4" />
+            </video>
+          </div>
+        </div>
+      </div>
+      <Nav />
+    </>
+  )
+}
