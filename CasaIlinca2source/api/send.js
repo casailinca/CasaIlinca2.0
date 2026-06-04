@@ -92,23 +92,20 @@ function ownerHtml({ to_name, to_email, checkin_date, checkout_date, nights, pho
   <table width="100%" cellpadding="0" cellspacing="0" style="background:#f5f5f7;padding:40px 0;">
     <tr><td align="center">
       <table width="560" cellpadding="0" cellspacing="0" style="background:white;border-radius:24px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,0.08);">
-
-        <!-- Header -->
         <tr>
           <td style="background:#1d1d1f;padding:36px 40px;text-align:center;">
             <p style="margin:0;color:#d4af37;font-size:11px;letter-spacing:4px;text-transform:uppercase;font-weight:600;">Pensiune</p>
             <h1 style="margin:8px 0 0;color:white;font-size:32px;font-weight:200;letter-spacing:10px;text-transform:uppercase;">Ilinca</h1>
           </td>
         </tr>
-
-        <!-- Body -->
         <tr>
           <td style="padding:40px;">
             <p style="margin:0 0 8px;font-size:13px;color:#8e8e93;letter-spacing:1px;text-transform:uppercase;font-weight:600;">Cerere nouă</p>
             <h2 style="margin:0 0 24px;font-size:24px;font-weight:600;color:#1d1d1f;">${to_name}</h2>
-
-            <!-- Details box -->
-            <table width="100%" cellpadding="0" cellspacing="0" style="background:#f5f5f7;border-radius:16px;overflow:hidden;margin-bottom:32px;">
+            <p style="margin:0 0 32px;font-size:15px;color:#3a3a3c;line-height:1.7;">
+              Email: <a href="mailto:${to_email}" style="color:#d4af37;text-decoration:none;font-weight:600;">${to_email}</a>
+            </p>
+            <table width="100%" cellpadding="0" cellspacing="0" style="background:#f5f5f7;border-radius:16px;margin-bottom:32px;">
               <tr>
                 <td style="padding:28px 32px;">
                   <p style="margin:0 0 20px;font-size:11px;color:#8e8e93;letter-spacing:2px;text-transform:uppercase;font-weight:700;">Detalii sejur</p>
@@ -137,34 +134,15 @@ function ownerHtml({ to_name, to_email, checkin_date, checkout_date, nights, pho
                 </td>
               </tr>
             </table>
-
-            <p style="margin:0 0 6px;font-size:14px;color:#8e8e93;">
-              Email: <a href="mailto:${to_email}" style="color:#d4af37;text-decoration:none;font-weight:600;">${to_email}</a>
-            </p>
-          </td>
-        </tr>
-
-        <!-- Actions -->
-        <tr>
-          <td style="padding:0 40px 32px;">
             <table width="100%" cellpadding="0" cellspacing="0">
               <tr>
                 <td bgcolor="#25D366" style="border-radius:16px;background:#25D366;" align="center">
                   <a href="https://wa.me/4${phone.replace(/^0/, '')}" style="display:inline-block;padding:16px 24px;color:white;text-decoration:none;font-size:14px;font-weight:700;width:100%;box-sizing:border-box;text-align:center;">WhatsApp</a>
                 </td>
               </tr>
-              <tr><td style="height:12px;"></td></tr>
-              <tr>
-                <td style="text-align:center;padding:4px 0 8px;">
-                  <p style="margin:0;font-size:11px;color:#8e8e93;text-transform:uppercase;letter-spacing:1px;font-weight:600;">Telefon</p>
-                  <a href="tel:+4${phone.replace(/^0/, '')}" style="color:#d4af37;font-size:22px;font-weight:700;text-decoration:none;display:block;margin-top:6px;">+4${phone.replace(/^0/, '')}</a>
-                </td>
-              </tr>
             </table>
           </td>
         </tr>
-
-        <!-- Footer -->
         <tr>
           <td style="background:#f5f5f7;padding:24px 40px;text-align:center;border-top:1px solid #e5e5ea;">
             <p style="margin:0;font-size:12px;color:#8e8e93;">Str. Izvorul Muntelui Nr. 48A, Izvoru Muntelui, Neamț</p>
@@ -173,7 +151,6 @@ function ownerHtml({ to_name, to_email, checkin_date, checkout_date, nights, pho
             </p>
           </td>
         </tr>
-
       </table>
     </td></tr>
   </table>
