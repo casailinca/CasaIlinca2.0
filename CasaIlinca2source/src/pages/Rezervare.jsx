@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import emailjs from '@emailjs/browser'
 import Nav from '../components/Nav'
+import SEO from '../components/SEO'
 
 const EMAILJS_SERVICE_ID    = 'service_qgpjw3k'
 const EMAILJS_TEMPLATE_ID   = 'template_1ewtq6s'
@@ -58,6 +59,7 @@ export default function Rezervare() {
 
   return (
     <>
+      <SEO title="Rezervare" description="Verifică disponibilitatea și rezervă-ți sejurul la Casa Ilinca, Izvorul Muntelui." />
       <div className="page" style={{ maxWidth: 540 }}>
         <Link to="/" className="back-btn"><i className="fas fa-chevron-left" /> Înapoi</Link>
         <h1>Verifică Disponibilitatea</h1>

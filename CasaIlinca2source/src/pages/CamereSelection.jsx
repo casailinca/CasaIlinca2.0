@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import Nav from '../components/Nav'
+import SEO from '../components/SEO'
 import { media } from '../media'
 import { useRevealList } from '../hooks/useReveal'
 
@@ -14,6 +15,7 @@ export default function CamereSelection() {
   const listRef = useRevealList()
   return (
     <>
+      <SEO title="Camere" description="4 dormitoare confortabile cu pat matrimonial la Casa Ilinca, Izvorul Muntelui." />
       <div className="page" style={{ maxWidth: 1040 }}>
         <Link to="/interior" className="back-btn"><i className="fas fa-arrow-left" /> Înapoi la Interior</Link>
         <h1>Alege Camera</h1>

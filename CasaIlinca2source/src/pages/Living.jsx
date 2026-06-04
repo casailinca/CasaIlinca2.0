@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import Nav from '../components/Nav'
+import SEO from '../components/SEO'
 import Lightbox from '../components/Lightbox'
 import { media } from '../media'
 
@@ -10,6 +11,7 @@ export default function Living() {
   const [lightbox, setLightbox] = useState(null)
   return (
     <>
+      <SEO title="Living & Bucătărie" description="Spațiu generos pentru relaxare și socializare la Casa Ilinca." />
       <div className="page" style={{ maxWidth: 1200 }}>
         <Link to="/interior" className="back-btn"><i className="fas fa-arrow-left" /> Înapoi la Interior</Link>
         <h1>Living & Bucătărie</h1>

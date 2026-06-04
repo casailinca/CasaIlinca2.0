@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import Nav from '../components/Nav'
+import SEO from '../components/SEO'
 import { media } from '../media'
 import { useRevealList } from '../hooks/useReveal'
 
@@ -7,6 +8,7 @@ export default function Spaces() {
   const listRef = useRevealList()
   return (
     <>
+      <SEO title="Spații" description="Explorează exteriorul și interiorul Casei Ilinca — curte, dormitoare, living și băi." />
       <div className="page">
         <h1>Spații</h1>
         <p className="subtitle" style={{ marginBottom: 40 }}>Explorează fiecare colț al casei</p>

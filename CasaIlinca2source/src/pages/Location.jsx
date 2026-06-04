@@ -1,9 +1,11 @@
 import { Link } from 'react-router-dom'
 import Nav from '../components/Nav'
+import SEO from '../components/SEO'
 
 export default function Location() {
   return (
     <>
+      <SEO title="Locație" description="Casa Ilinca se află în Str. Izvorul Muntelui Nr. 48A, Izvoru Muntelui, Neamț." />
       <div className="page" style={{ maxWidth: 800 }}>
         <Link to="/" className="back-btn"><i className="fas fa-chevron-left" /> Înapoi</Link>
         <h1>Locație</h1>

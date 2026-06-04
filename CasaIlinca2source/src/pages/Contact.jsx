@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import Nav from '../components/Nav'
+import SEO from '../components/SEO'
 import { media } from '../media'
 
 export default function Contact() {
@@ -10,6 +11,7 @@ export default function Contact() {
 
   return (
     <>
+      <SEO title="Contact" description="Contactează Casa Ilinca prin telefon sau WhatsApp pentru rezervări și informații." />
       <div className="page" style={{ maxWidth: 720 }}>
         <Link to="/" className="back-btn"><i className="fas fa-chevron-left" /> Înapoi</Link>
         <h1>Contact</h1>

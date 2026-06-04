@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import Nav from '../components/Nav'
+import SEO from '../components/SEO'
 import { media } from '../media'
 import { useRevealList } from '../hooks/useReveal'
 
@@ -7,6 +8,7 @@ export default function InteriorSelection() {
   const listRef = useRevealList()
   return (
     <>
+      <SEO title="Interior" description="Dormitoare, living și băi — design cald și finisaje de calitate la Casa Ilinca." />
       <div className="page">
         <Link to="/spaces" className="back-btn"><i className="fas fa-arrow-left" /> Înapoi</Link>
         <h1>Interior</h1>

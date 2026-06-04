@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import Nav from '../components/Nav'
+import SEO from '../components/SEO'
 import { media } from '../media'
 import { useReveal } from '../hooks/useReveal'
 
@@ -7,6 +8,7 @@ export default function Description() {
   const cardRef = useReveal()
   return (
     <>
+      <SEO title="Despre Ilinca" description="Povestea de la poalele Ceahlăului. Pensiune confortabilă în Izvorul Muntelui, Neamț." />
       <div className="page" style={{ maxWidth: 860 }}>
         <Link to="/" className="back-btn">
           <i className="fas fa-chevron-left" /> Înapoi

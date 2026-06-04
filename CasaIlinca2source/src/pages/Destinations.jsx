@@ -1,4 +1,5 @@
 import Nav from '../components/Nav'
+import SEO from '../components/SEO'
 import { media } from '../media'
 import { useRevealList } from '../hooks/useReveal'
 
@@ -37,6 +38,7 @@ export default function Destinations() {
   const listRef = useRevealList()
   return (
     <>
+      <SEO title="Atracții" description="Masivul Ceahlău, Lacul Izvorul Muntelui, Cheile Bicazului, Lacu Roșu — toate la câțiva kilometri de Casa Ilinca." />
       <div className="page" style={{ maxWidth: 1040 }}>
         <header style={{ textAlign: 'center', paddingTop: 40, paddingBottom: 30 }}>
           <h1 style={{ fontFamily: "'Playfair Display', serif", fontStyle: 'italic', fontSize: 'clamp(2.2rem, 7vw, 3.8rem)', letterSpacing: 0 }}>
