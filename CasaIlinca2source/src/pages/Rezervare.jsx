@@ -3,11 +3,10 @@ import { Link } from 'react-router-dom'
 import emailjs from '@emailjs/browser'
 import Nav from '../components/Nav'
 
-// EmailJS credentials — fill these in after creating your EmailJS account:
-// https://www.emailjs.com/
-const EMAILJS_SERVICE_ID  = 'service_qgpjw3k'
-const EMAILJS_TEMPLATE_ID = 'template_1ewtq6s'
-const EMAILJS_PUBLIC_KEY  = 'INCx8tda9H8L77gGt'
+const EMAILJS_SERVICE_ID    = 'service_qgpjw3k'
+const EMAILJS_TEMPLATE_ID   = 'template_1ewtq6s'
+const EMAILJS_OWNER_TEMPLATE = 'template_m1ruixs'
+const EMAILJS_PUBLIC_KEY    = 'INCx8tda9H8L77gGt'
 
 function formatDate(dateStr) {
   if (!dateStr) return ''
@@ -47,7 +46,10 @@ export default function Rezervare() {
     }
 
     try {
-      await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams, EMAILJS_PUBLIC_KEY)
+      await Promise.all([
+        emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID,    templateParams, EMAILJS_PUBLIC_KEY),
+        emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_OWNER_TEMPLATE, templateParams, EMAILJS_PUBLIC_KEY),
+      ])
       setStatus('sent')
     } catch {
       setStatus('error')
