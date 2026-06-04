@@ -26,6 +26,8 @@ jobs:
         working-directory: CasaIlinca2source
       - run: npm run build
         working-directory: CasaIlinca2source
+        env:
+          VITE_BASE_PATH: /CasaIlinca2.0/
       - uses: actions/upload-pages-artifact@v3
         with:
           path: CasaIlinca2source/dist
