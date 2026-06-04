@@ -1,5 +1,6 @@
 import Nav from '../components/Nav'
 import { media } from '../media'
+import { useRevealList } from '../hooks/useReveal'
 
 const destinations = [
   {
@@ -33,6 +34,7 @@ const destinations = [
 ]
 
 export default function Destinations() {
+  const listRef = useRevealList()
   return (
     <>
       <div className="page" style={{ maxWidth: 1040 }}>
@@ -45,25 +47,17 @@ export default function Destinations() {
           </p>
         </header>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 36 }}>
+        <div ref={listRef} className="dest-grid">
           {destinations.map(d => (
-            <a
-              key={d.title}
-              href={d.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ background: 'white', border: '1px solid var(--border)', textDecoration: 'none', color: 'inherit', display: 'flex', flexDirection: 'column', transition: 'transform 0.4s, box-shadow 0.4s' }}
-              onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-8px)'; e.currentTarget.style.boxShadow = '0 25px 50px rgba(0,0,0,0.08)' }}
-              onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = '' }}
-            >
-              <div style={{ height: 280, overflow: 'hidden' }}>
-                <img src={media(d.img)} alt={d.title} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+            <a key={d.title} href={d.href} target="_blank" rel="noopener noreferrer" className="dest-card">
+              <div className="dest-img">
+                <img src={media(d.img)} alt={d.title} />
               </div>
-              <div style={{ padding: 28, display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
-                <span style={{ fontSize: '0.7rem', letterSpacing: 2, color: 'var(--gold)', textTransform: 'uppercase', fontWeight: 700, marginBottom: 10 }}>{d.tag}</span>
-                <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.7rem', marginBottom: 10 }}>{d.title}</h2>
-                <p style={{ fontSize: '0.88rem', color: '#666', lineHeight: 1.7, fontWeight: 300, flexGrow: 1, marginBottom: 16 }}>{d.desc}</p>
-                <span style={{ fontSize: '0.72rem', fontWeight: 700, color: 'var(--gold)', textTransform: 'uppercase', display: 'flex', alignItems: 'center', gap: 7 }}>
+              <div className="dest-body">
+                <span className="dest-tag">{d.tag}</span>
+                <h2 className="dest-title">{d.title}</h2>
+                <p className="dest-desc">{d.desc}</p>
+                <span className="dest-link">
                   <i className="fas fa-location-arrow" /> Vezi traseul
                 </span>
               </div>

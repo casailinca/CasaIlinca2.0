@@ -10,7 +10,7 @@ export default function Contact() {
 
   return (
     <>
-      <div className="page" style={{ maxWidth: 540 }}>
+      <div className="page" style={{ maxWidth: 720 }}>
         <Link to="/" className="back-btn"><i className="fas fa-chevron-left" /> Înapoi</Link>
         <h1>Contact</h1>
         <p className="subtitle">Suntem la un click distanță pentru orice întrebare.</p>
