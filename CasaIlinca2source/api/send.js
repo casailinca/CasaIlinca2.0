@@ -88,51 +88,113 @@ function ownerHtml({ to_name, to_email, checkin_date, checkout_date, nights, pho
 <!DOCTYPE html>
 <html lang="ro">
 <head><meta charset="UTF-8"/></head>
-<body style="margin:0;padding:0;background:#f5f5f7;font-family:'Helvetica Neue',Arial,sans-serif;">
-  <table width="100%" cellpadding="0" cellspacing="0" style="background:#f5f5f7;padding:40px 0;">
+<body style="margin:0;padding:0;background:#0f0f0f;font-family:'Helvetica Neue',Arial,sans-serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#0f0f0f;padding:40px 0;">
     <tr><td align="center">
-      <table width="560" cellpadding="0" cellspacing="0" style="background:white;border-radius:24px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,0.08);">
+      <table width="540" cellpadding="0" cellspacing="0" style="background:#1a1a1a;border-radius:20px;overflow:hidden;border:1px solid #2a2a2a;">
+
+        <!-- Top bar -->
         <tr>
-          <td style="background:#d4af37;padding:28px 40px;">
-            <p style="margin:0;color:white;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;">Cerere nouă de rezervare</p>
-          </td>
-        </tr>
-        <tr>
-          <td style="padding:40px;">
-            <table width="100%" cellpadding="0" cellspacing="0" style="background:#f5f5f7;border-radius:16px;">
+          <td style="padding:28px 36px;border-bottom:1px solid #2a2a2a;">
+            <table width="100%" cellpadding="0" cellspacing="0">
               <tr>
-                <td style="padding:28px 32px;">
-                  <table width="100%" cellpadding="0" cellspacing="0">
-                    <tr>
-                      <td style="font-size:12px;color:#8e8e93;font-weight:700;text-transform:uppercase;letter-spacing:1px;width:120px;padding-bottom:14px;">Nume</td>
-                      <td style="font-size:15px;font-weight:600;color:#1d1d1f;padding-bottom:14px;">${to_name}</td>
-                    </tr>
-                    <tr>
-                      <td style="font-size:12px;color:#8e8e93;font-weight:700;text-transform:uppercase;letter-spacing:1px;padding-bottom:14px;">Telefon</td>
-                      <td style="font-size:15px;font-weight:600;color:#1d1d1f;padding-bottom:14px;">${phone}</td>
-                    </tr>
-                    <tr>
-                      <td style="font-size:12px;color:#8e8e93;font-weight:700;text-transform:uppercase;letter-spacing:1px;padding-bottom:14px;">Email</td>
-                      <td style="font-size:15px;font-weight:600;color:#1d1d1f;padding-bottom:14px;">${to_email}</td>
-                    </tr>
-                    <tr>
-                      <td style="font-size:12px;color:#8e8e93;font-weight:700;text-transform:uppercase;letter-spacing:1px;padding-bottom:14px;">Check-in</td>
-                      <td style="font-size:15px;font-weight:600;color:#1d1d1f;padding-bottom:14px;">${checkin_date}</td>
-                    </tr>
-                    <tr>
-                      <td style="font-size:12px;color:#8e8e93;font-weight:700;text-transform:uppercase;letter-spacing:1px;padding-bottom:14px;">Check-out</td>
-                      <td style="font-size:15px;font-weight:600;color:#1d1d1f;padding-bottom:14px;">${checkout_date}</td>
-                    </tr>
-                    <tr>
-                      <td style="font-size:12px;color:#8e8e93;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Nopți</td>
-                      <td style="font-size:15px;font-weight:600;color:#1d1d1f;">${nights}</td>
-                    </tr>
-                  </table>
+                <td>
+                  <p style="margin:0;font-size:10px;color:#d4af37;letter-spacing:3px;text-transform:uppercase;font-weight:700;">Casa Ilinca</p>
+                  <p style="margin:6px 0 0;font-size:20px;font-weight:600;color:white;">Cerere nouă 🔔</p>
+                </td>
+                <td align="right">
+                  <p style="margin:0;font-size:11px;color:#555;font-weight:500;">${nights} ${parseInt(nights) === 1 ? 'noapte' : 'nopți'}</p>
+                  <p style="margin:4px 0 0;font-size:22px;font-weight:700;color:#d4af37;">${nights}🌙</p>
                 </td>
               </tr>
             </table>
           </td>
         </tr>
+
+        <!-- Dates banner -->
+        <tr>
+          <td style="background:#d4af37;padding:18px 36px;">
+            <table width="100%" cellpadding="0" cellspacing="0">
+              <tr>
+                <td align="center" width="45%">
+                  <p style="margin:0;font-size:10px;color:rgba(0,0,0,0.6);text-transform:uppercase;letter-spacing:2px;font-weight:700;">Check-in</p>
+                  <p style="margin:6px 0 0;font-size:16px;font-weight:700;color:#1d1d1f;">${checkin_date}</p>
+                </td>
+                <td align="center" width="10%" style="color:rgba(0,0,0,0.4);font-size:18px;">→</td>
+                <td align="center" width="45%">
+                  <p style="margin:0;font-size:10px;color:rgba(0,0,0,0.6);text-transform:uppercase;letter-spacing:2px;font-weight:700;">Check-out</p>
+                  <p style="margin:6px 0 0;font-size:16px;font-weight:700;color:#1d1d1f;">${checkout_date}</p>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <!-- Guest details -->
+        <tr>
+          <td style="padding:32px 36px;">
+            <p style="margin:0 0 20px;font-size:10px;color:#555;letter-spacing:2px;text-transform:uppercase;font-weight:700;">Date client</p>
+
+            <!-- Name -->
+            <table width="100%" cellpadding="0" cellspacing="0" style="background:#242424;border-radius:12px;margin-bottom:10px;">
+              <tr>
+                <td style="padding:16px 20px;">
+                  <p style="margin:0;font-size:10px;color:#666;text-transform:uppercase;letter-spacing:1px;font-weight:600;">Nume</p>
+                  <p style="margin:5px 0 0;font-size:17px;font-weight:600;color:white;">${to_name}</p>
+                </td>
+              </tr>
+            </table>
+
+            <!-- Phone -->
+            <table width="100%" cellpadding="0" cellspacing="0" style="background:#242424;border-radius:12px;margin-bottom:10px;">
+              <tr>
+                <td style="padding:16px 20px;">
+                  <p style="margin:0;font-size:10px;color:#666;text-transform:uppercase;letter-spacing:1px;font-weight:600;">Telefon</p>
+                  <a href="tel:${phone}" style="display:block;margin:5px 0 0;font-size:17px;font-weight:600;color:#d4af37;text-decoration:none;">${phone}</a>
+                </td>
+              </tr>
+            </table>
+
+            <!-- Email -->
+            <table width="100%" cellpadding="0" cellspacing="0" style="background:#242424;border-radius:12px;">
+              <tr>
+                <td style="padding:16px 20px;">
+                  <p style="margin:0;font-size:10px;color:#666;text-transform:uppercase;letter-spacing:1px;font-weight:600;">Email</p>
+                  <a href="mailto:${to_email}" style="display:block;margin:5px 0 0;font-size:15px;font-weight:600;color:#d4af37;text-decoration:none;">${to_email}</a>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <!-- Quick reply -->
+        <tr>
+          <td style="padding:0 36px 32px;">
+            <table width="100%" cellpadding="0" cellspacing="0">
+              <tr>
+                <td width="48%" align="center">
+                  <a href="https://wa.me/4${phone.replace(/^0/, '')}" style="display:block;background:#25D366;color:white;text-decoration:none;padding:14px;border-radius:12px;font-size:13px;font-weight:700;text-align:center;">
+                    💬 WhatsApp
+                  </a>
+                </td>
+                <td width="4%"></td>
+                <td width="48%" align="center">
+                  <a href="tel:${phone}" style="display:block;background:#242424;color:white;text-decoration:none;padding:14px;border-radius:12px;font-size:13px;font-weight:700;text-align:center;border:1px solid #333;">
+                    📞 Sună
+                  </a>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <!-- Footer -->
+        <tr>
+          <td style="padding:20px 36px;border-top:1px solid #2a2a2a;text-align:center;">
+            <p style="margin:0;font-size:11px;color:#444;">casa-ilinca2-0.vercel.app</p>
+          </td>
+        </tr>
+
       </table>
     </td></tr>
   </table>
