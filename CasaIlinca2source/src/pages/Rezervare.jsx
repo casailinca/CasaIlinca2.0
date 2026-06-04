@@ -27,7 +27,6 @@ export default function Rezervare() {
   const [phone, setPhone]       = useState('')
   const [email, setEmail]       = useState('')
   const [status, setStatus]     = useState('idle') // idle | sending | sent | error
-  const [errorMsg, setErrorMsg] = useState('')
 
   const nights = nightsBetween(checkin, checkout)
   const today  = new Date().toISOString().split('T')[0]
@@ -50,9 +49,7 @@ export default function Rezervare() {
     try {
       await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams, EMAILJS_PUBLIC_KEY)
       setStatus('sent')
-    } catch (err) {
-      console.error('EmailJS error:', err)
-      setErrorMsg(JSON.stringify(err))
+    } catch {
       setStatus('error')
     }
   }
@@ -141,8 +138,8 @@ export default function Rezervare() {
             </div>
 
             {status === 'error' && (
-              <p style={{ color: '#c0392b', textAlign: 'center', fontSize: '0.75rem', wordBreak: 'break-all' }}>
-                Eroare: {errorMsg}
+              <p style={{ color: '#c0392b', textAlign: 'center', fontSize: '0.85rem' }}>
+                A apărut o eroare. Verifică conexiunea și încearcă din nou.
               </p>
             )}
 
