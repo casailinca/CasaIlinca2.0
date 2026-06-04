@@ -5,9 +5,9 @@ import Nav from '../components/Nav'
 
 // EmailJS credentials — fill these in after creating your EmailJS account:
 // https://www.emailjs.com/
-const EMAILJS_SERVICE_ID  = 'YOUR_SERVICE_ID'
-const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID'
-const EMAILJS_PUBLIC_KEY  = 'YOUR_PUBLIC_KEY'
+const EMAILJS_SERVICE_ID  = 'service_qgpjw3k'
+const EMAILJS_TEMPLATE_ID = 'template_7jmrsys'
+const EMAILJS_PUBLIC_KEY  = 'INCx8tda9H8L77gGt'
 
 function formatDate(dateStr) {
   if (!dateStr) return ''
