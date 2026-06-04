@@ -144,17 +144,20 @@ function ownerHtml({ to_name, to_email, checkin_date, checkout_date, nights, pho
           </td>
         </tr>
 
-        <!-- Buttons -->
+        <!-- Actions -->
         <tr>
           <td style="padding:0 40px 32px;">
             <table width="100%" cellpadding="0" cellspacing="0">
               <tr>
-                <td width="48%" bgcolor="#25D366" style="border-radius:16px;background:#25D366;" align="center">
+                <td bgcolor="#25D366" style="border-radius:16px;background:#25D366;" align="center">
                   <a href="https://wa.me/4${phone.replace(/^0/, '')}" style="display:inline-block;padding:16px 24px;color:white;text-decoration:none;font-size:14px;font-weight:700;width:100%;box-sizing:border-box;text-align:center;">WhatsApp</a>
                 </td>
-                <td width="4%"></td>
-                <td width="48%" bgcolor="#1d1d1f" style="border-radius:16px;background:#1d1d1f;" align="center">
-                  <a href="tel:+4${phone.replace(/^0/, '')}" style="display:inline-block;padding:16px 24px;color:white;text-decoration:none;font-size:14px;font-weight:700;width:100%;box-sizing:border-box;text-align:center;">Sună</a>
+              </tr>
+              <tr><td style="height:12px;"></td></tr>
+              <tr>
+                <td style="text-align:center;padding:4px 0 8px;">
+                  <p style="margin:0;font-size:11px;color:#8e8e93;text-transform:uppercase;letter-spacing:1px;font-weight:600;">Telefon</p>
+                  <a href="tel:+4${phone.replace(/^0/, '')}" style="color:#d4af37;font-size:22px;font-weight:700;text-decoration:none;display:block;margin-top:6px;">+4${phone.replace(/^0/, '')}</a>
                 </td>
               </tr>
             </table>
