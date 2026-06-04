@@ -152,6 +152,27 @@ function ownerHtml({ to_name, to_email, checkin_date, checkout_date, nights, pho
           </td>
         </tr>
 
+        <!-- Quick reply -->
+        <tr>
+          <td style="padding:0 40px 32px;">
+            <table width="100%" cellpadding="0" cellspacing="0">
+              <tr>
+                <td width="48%">
+                  <a href="https://wa.me/4${phone.replace(/^0/, '')}" style="display:block;background:#25D366;color:white;text-decoration:none;padding:15px;border-radius:14px;font-size:13px;font-weight:700;text-align:center;">
+                    WhatsApp
+                  </a>
+                </td>
+                <td width="4%"></td>
+                <td width="48%">
+                  <a href="tel:${phone}" style="display:block;background:#1d1d1f;color:white;text-decoration:none;padding:15px;border-radius:14px;font-size:13px;font-weight:700;text-align:center;">
+                    Sună
+                  </a>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
         <!-- Footer -->
         <tr>
           <td style="background:#f5f5f7;padding:24px 40px;text-align:center;border-top:1px solid #e5e5ea;">
