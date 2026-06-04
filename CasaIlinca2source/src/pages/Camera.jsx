@@ -22,11 +22,11 @@ export default function Camera() {
         <p style={{ color: 'var(--accent)', fontSize: '0.9rem', marginBottom: 30, display: 'flex', alignItems: 'center', gap: 8 }}>
           <i className="fas fa-bed" /> {cam.spec}
         </p>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 28 }}>
-          <div style={{ borderRadius: 35, overflow: 'hidden', border: '1px solid var(--border)', boxShadow: '0 15px 40px rgba(0,0,0,0.1)', aspectRatio: '4/5' }}>
+        <div className="camera-grid">
+          <div className="camera-media-box">
             <img src={media(cam.img)} alt={cam.title} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
           </div>
-          <div style={{ borderRadius: 35, overflow: 'hidden', border: '1px solid var(--border)', boxShadow: '0 15px 40px rgba(0,0,0,0.1)', aspectRatio: '9/16', background: '#000' }}>
+          <div className="camera-media-box" style={{ background: '#000' }}>
             <video autoPlay muted loop playsInline controls poster={media(cam.poster)} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}>
               <source src={media(cam.video)} type="video/mp4" />
             </video>

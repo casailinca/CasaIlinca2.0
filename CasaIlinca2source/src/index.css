@@ -387,9 +387,33 @@ nav.site-nav.open {
 .booking-success h2 { font-size: 1.5rem; font-weight: 600; }
 .booking-success p  { color: var(--accent); font-size: 0.9rem; line-height: 1.6; }
 
+/* ---- CAMERA PAGE ---- */
+.camera-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+.camera-media-box {
+  border-radius: 35px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+  aspect-ratio: 4/5;
+}
+
 /* ---- RESPONSIVE ---- */
 @media (min-width: 800px) {
   .page { padding: 44px 40px 140px; }
   .split-card { height: 260px; }
   .split-card.reverse { flex-direction: row; }
+
+  .camera-grid {
+    flex-direction: row;
+    align-items: stretch;
+  }
+  .camera-media-box {
+    flex: 1;
+    aspect-ratio: 3/4;
+    max-height: 70vh;
+  }
 }
