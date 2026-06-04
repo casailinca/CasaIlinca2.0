@@ -31,7 +31,7 @@ function customerHtml({ to_name, checkin_date, checkout_date, nights, phone }) {
             <h2 style="margin:0 0 24px;font-size:24px;font-weight:600;color:#1d1d1f;">${to_name}</h2>
             <p style="margin:0 0 32px;font-size:15px;color:#3a3a3c;line-height:1.7;">
               Am primit cererea ta de disponibilitate pentru <strong>Casa Ilinca</strong>.
-              Proprietarul te va contacta în cel mai scurt timp pentru confirmare.
+              Vă vom contacta în cel mai scurt timp pentru confirmare.
             </p>
             <table width="100%" cellpadding="0" cellspacing="0" style="background:#f5f5f7;border-radius:16px;margin-bottom:32px;">
               <tr>
