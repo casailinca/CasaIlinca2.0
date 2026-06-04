@@ -58,14 +58,14 @@ export default function Rezervare() {
     <>
       <div className="page" style={{ maxWidth: 540 }}>
         <Link to="/" className="back-btn"><i className="fas fa-chevron-left" /> Înapoi</Link>
-        <h1>Rezervare</h1>
-        <p className="subtitle">Alege datele sejurului tău</p>
+        <h1>Verifică Disponibilitatea</h1>
+        <p className="subtitle">Trimite-ne datele și te contactăm noi</p>
 
         {status === 'sent' ? (
           <div className="booking-success">
             <i className="fas fa-check-circle" style={{ fontSize: '2.5rem', color: 'var(--gold)' }} />
-            <h2>Cerere trimisă!</h2>
-            <p>Am primit cererea ta. Vei primi un email de confirmare la <strong>{email}</strong>. Te vom contacta în cel mai scurt timp.</p>
+            <h2>Cerere primită!</h2>
+            <p>Verificăm disponibilitatea pentru datele alese și te contactăm în cel mai scurt timp la <strong>{email}</strong>.</p>
             <button className="book-submit" style={{ marginTop: 20 }} onClick={() => { setStatus('idle'); setCheckin(''); setCheckout(''); setName(''); setPhone(''); setEmail('') }}>
               Altă rezervare
             </button>
@@ -146,10 +146,10 @@ export default function Rezervare() {
             <button type="submit" className="book-submit" disabled={!valid || status === 'sending'}>
               {status === 'sending'
                 ? <><i className="fas fa-spinner fa-spin" /> Se trimite...</>
-                : <><i className="fas fa-paper-plane" /> Rezervă</>}
+                : <><i className="fas fa-paper-plane" /> Verifică Disponibilitatea</>}
             </button>
             <p style={{ textAlign: 'center', fontSize: '0.78rem', color: 'var(--accent)', marginTop: -6 }}>
-              Vei primi un email de confirmare automat
+              Proprietarul te va contacta în cel mai scurt timp
             </p>
           </form>
         )}
