@@ -23,10 +23,12 @@ jobs:
         with:
           node-version: 20
       - run: npm install
+        working-directory: Casallinca2source
       - run: npm run build
+        working-directory: Casallinca2source
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: dist
+          path: Casallinca2source/dist
 
   deploy:
     needs: build
