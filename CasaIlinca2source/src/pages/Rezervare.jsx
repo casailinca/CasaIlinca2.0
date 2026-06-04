@@ -1,6 +1,13 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import emailjs from '@emailjs/browser'
 import Nav from '../components/Nav'
+
+// EmailJS credentials — fill these in after creating your EmailJS account:
+// https://www.emailjs.com/
+const EMAILJS_SERVICE_ID  = 'YOUR_SERVICE_ID'
+const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID'
+const EMAILJS_PUBLIC_KEY  = 'YOUR_PUBLIC_KEY'
 
 function formatDate(dateStr) {
   if (!dateStr) return ''
@@ -18,25 +25,33 @@ export default function Rezervare() {
   const [checkout, setCheckout] = useState('')
   const [name, setName]         = useState('')
   const [phone, setPhone]       = useState('')
-  const [sent, setSent]         = useState(false)
+  const [email, setEmail]       = useState('')
+  const [status, setStatus]     = useState('idle') // idle | sending | sent | error
 
   const nights = nightsBetween(checkin, checkout)
   const today  = new Date().toISOString().split('T')[0]
-  const valid  = checkin && checkout && nights > 0 && name.trim() && phone.trim()
+  const valid  = checkin && checkout && nights > 0 && name.trim() && phone.trim() && email.trim()
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     if (!valid) return
-    const msg = encodeURIComponent(
-      `Bună ziua! Doresc să fac o rezervare la Casa Ilinca:\n` +
-      `📅 Check-in: ${formatDate(checkin)}\n` +
-      `📅 Check-out: ${formatDate(checkout)}\n` +
-      `🌙 Nopți: ${nights}\n` +
-      `👤 Numele: ${name.trim()}\n` +
-      `📞 Telefon: ${phone.trim()}`
-    )
-    window.open(`https://wa.me/40793681421?text=${msg}`, '_blank')
-    setSent(true)
+    setStatus('sending')
+
+    const templateParams = {
+      to_email:      email.trim(),
+      to_name:       name.trim(),
+      phone:         phone.trim(),
+      checkin_date:  formatDate(checkin),
+      checkout_date: formatDate(checkout),
+      nights:        nights,
+    }
+
+    try {
+      await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams, EMAILJS_PUBLIC_KEY)
+      setStatus('sent')
+    } catch {
+      setStatus('error')
+    }
   }
 
   return (
@@ -46,12 +61,12 @@ export default function Rezervare() {
         <h1>Rezervare</h1>
         <p className="subtitle">Alege datele sejurului tău</p>
 
-        {sent ? (
+        {status === 'sent' ? (
           <div className="booking-success">
-            <i className="fab fa-whatsapp" style={{ fontSize: '2.5rem', color: '#25D366' }} />
+            <i className="fas fa-check-circle" style={{ fontSize: '2.5rem', color: 'var(--gold)' }} />
             <h2>Cerere trimisă!</h2>
-            <p>Mesajul a fost deschis în WhatsApp. Te vom contacta în cel mai scurt timp pentru confirmare.</p>
-            <button className="book-submit" style={{ marginTop: 20 }} onClick={() => setSent(false)}>
+            <p>Am primit cererea ta. Vei primi un email de confirmare la <strong>{email}</strong>. Te vom contacta în cel mai scurt timp.</p>
+            <button className="book-submit" style={{ marginTop: 20 }} onClick={() => { setStatus('idle'); setCheckin(''); setCheckout(''); setName(''); setPhone(''); setEmail('') }}>
               Altă rezervare
             </button>
           </div>
@@ -111,11 +126,30 @@ export default function Rezervare() {
               />
             </div>
 
-            <button type="submit" className="book-submit" disabled={!valid}>
-              <i className="fab fa-whatsapp" /> Trimite Cererea pe WhatsApp
+            <div className="booking-field">
+              <label>Adresa de email</label>
+              <input
+                type="email"
+                value={email}
+                onChange={e => setEmail(e.target.value)}
+                placeholder="exemplu@email.com"
+                required
+              />
+            </div>
+
+            {status === 'error' && (
+              <p style={{ color: '#c0392b', textAlign: 'center', fontSize: '0.85rem' }}>
+                A apărut o eroare. Verifică conexiunea și încearcă din nou.
+              </p>
+            )}
+
+            <button type="submit" className="book-submit" disabled={!valid || status === 'sending'}>
+              {status === 'sending'
+                ? <><i className="fas fa-spinner fa-spin" /> Se trimite...</>
+                : <><i className="fas fa-paper-plane" /> Rezervă</>}
             </button>
             <p style={{ textAlign: 'center', fontSize: '0.78rem', color: 'var(--accent)', marginTop: -6 }}>
-              Vei fi redirecționat în WhatsApp pentru confirmare
+              Vei primi un email de confirmare automat
             </p>
           </form>
         )}
