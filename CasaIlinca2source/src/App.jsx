@@ -11,6 +11,7 @@ import Living from './pages/Living'
 import Bai from './pages/Bai'
 import Location from './pages/Location'
 import Contact from './pages/Contact'
+import Rezervare from './pages/Rezervare'
 
 export default function App() {
   return (
@@ -28,6 +29,7 @@ export default function App() {
         <Route path="/bai" element={<Bai />} />
         <Route path="/location" element={<Location />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/rezervare" element={<Rezervare />} />
       </Routes>
     </HashRouter>
   )
