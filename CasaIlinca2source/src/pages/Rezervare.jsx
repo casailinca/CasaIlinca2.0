@@ -49,7 +49,8 @@ export default function Rezervare() {
     try {
       await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams, EMAILJS_PUBLIC_KEY)
       setStatus('sent')
-    } catch {
+    } catch (err) {
+      console.error('EmailJS error:', err)
       setStatus('error')
     }
   }
