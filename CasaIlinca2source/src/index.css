@@ -131,12 +131,12 @@ nav.site-nav {
   position: fixed;
   bottom: 100px;
   right: 30px;
-  background: rgba(29, 29, 31, 0.82);
+  background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(28px) saturate(180%);
   -webkit-backdrop-filter: blur(28px) saturate(180%);
   border-radius: 28px;
-  border: 1px solid rgba(255,255,255,0.08);
-  box-shadow: 0 24px 60px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.06);
+  border: 1px solid var(--border);
+  box-shadow: 0 24px 60px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255,255,255,0.8);
   display: flex;
   flex-direction: column;
   padding: 10px 8px;
@@ -159,7 +159,7 @@ nav.site-nav.open {
 
 .nav-item {
   text-decoration: none;
-  color: rgba(255,255,255,0.55);
+  color: var(--accent);
   font-size: 1.15rem;
   width: 60px;
   height: 52px;
@@ -180,13 +180,13 @@ nav.site-nav.open {
   opacity: 0.7;
 }
 .nav-item:hover {
-  color: white;
-  background: rgba(255,255,255,0.08);
+  color: var(--primary);
+  background: rgba(0,0,0,0.05);
   transform: scale(1.05);
 }
 .nav-item.active {
   color: var(--gold);
-  background: rgba(212, 175, 55, 0.12);
+  background: rgba(212, 175, 55, 0.1);
 }
 .nav-item.active .nav-label { opacity: 1; }
 

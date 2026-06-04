@@ -4,7 +4,7 @@ import { Link, useLocation } from 'react-router-dom'
 const navItems = [
   { to: '/',            icon: 'fas fa-house',          label: 'Acasă' },
   { to: '/description', icon: 'fas fa-feather',         label: 'Poveste' },
-  { to: '/destinations',icon: 'fas fa-mountain-sun',    label: 'Destinații' },
+  { to: '/destinations',icon: 'fas fa-mountain',         label: 'Destinații' },
   { to: '/spaces',      icon: 'fas fa-layer-group',     label: 'Spații' },
   { to: '/location',    icon: 'fas fa-location-dot',    label: 'Locație' },
   { to: '/contact',     icon: 'fas fa-envelope',        label: 'Contact' },
