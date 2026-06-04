@@ -1,15 +1,17 @@
 import { Link } from 'react-router-dom'
 import Nav from '../components/Nav'
 import { media } from '../media'
+import { useRevealList } from '../hooks/useReveal'
 
 export default function Spaces() {
+  const listRef = useRevealList()
   return (
     <>
       <div className="page">
         <h1>Spații</h1>
         <p className="subtitle" style={{ marginBottom: 40 }}>Explorează fiecare colț al casei</p>
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+        <div ref={listRef} style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
           <Link to="/exterior" className="split-card">
             <div className="card-media"><img src={media('c_ext.jpg')} alt="Exterior" /></div>
             <div className="card-content">

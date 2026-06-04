@@ -1,6 +1,7 @@
 import { Link, useParams } from 'react-router-dom'
 import Nav from '../components/Nav'
 import { media } from '../media'
+import { useRevealList } from '../hooks/useReveal'
 
 const cameraData = {
   1: { title: 'Camera 1', spec: 'Pat Matrimonial', img: 'cam1_1.jpg', video: 'vid1.mp4', poster: 'cam1_2.JPG' },
@@ -12,6 +13,7 @@ const cameraData = {
 export default function Camera() {
   const { id } = useParams()
   const cam = cameraData[id]
+  const gridRef = useRevealList()
   if (!cam) return <p style={{ padding: 40 }}>Camera inexistentă.</p>
 
   return (
@@ -22,7 +24,7 @@ export default function Camera() {
         <p style={{ color: 'var(--accent)', fontSize: '0.9rem', marginBottom: 30, display: 'flex', alignItems: 'center', gap: 8 }}>
           <i className="fas fa-bed" /> {cam.spec}
         </p>
-        <div className="camera-grid">
+        <div ref={gridRef} className="camera-grid">
           <div className="camera-media-box">
             <img src={media(cam.img)} alt={cam.title} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
           </div>

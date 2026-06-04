@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom'
 import Nav from '../components/Nav'
 import { media } from '../media'
+import { useReveal } from '../hooks/useReveal'
 
 export default function Description() {
+  const cardRef = useReveal()
   return (
     <>
       <div className="page" style={{ maxWidth: 540 }}>
@@ -27,7 +29,7 @@ export default function Description() {
           }}
         />
 
-        <div style={{
+        <div ref={cardRef} style={{
           background: 'var(--glass)',
           backdropFilter: 'blur(20px)',
           WebkitBackdropFilter: 'blur(20px)',

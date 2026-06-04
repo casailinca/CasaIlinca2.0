@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import Nav from '../components/Nav'
 import { media } from '../media'
+import { useRevealList } from '../hooks/useReveal'
 
 const rooms = [
   { id: 1, img: 'cam1_1.jpg', label: 'Camera 1' },
@@ -10,13 +11,14 @@ const rooms = [
 ]
 
 export default function CamereSelection() {
+  const listRef = useRevealList()
   return (
     <>
       <div className="page" style={{ maxWidth: 1040 }}>
         <Link to="/interior" className="back-btn"><i className="fas fa-arrow-left" /> Înapoi la Interior</Link>
         <h1>Alege Camera</h1>
         <p className="subtitle" style={{ marginBottom: 36 }}>4 dormitoare — fiecare cu personalitatea sa</p>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 24 }}>
+        <div ref={listRef} style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 24 }}>
           {rooms.map(r => (
             <Link key={r.id} to={`/camera/${r.id}`} className="chapter-card">
               <img src={media(r.img)} alt={r.label} />

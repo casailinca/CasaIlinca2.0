@@ -25,17 +25,47 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* ---- PAGE WRAPPER ---- */
-.page {
-  padding: 24px 20px 140px;
-  max-width: 960px;
-  margin: 0 auto;
-  animation: fadeUp 0.7s ease-out both;
+/* ---- ANIMATION SYSTEM ---- */
+@keyframes pageIn {
+  from { opacity: 0; transform: translateY(18px) scale(0.99); filter: blur(4px); }
+  to   { opacity: 1; transform: translateY(0)   scale(1);    filter: blur(0); }
 }
 
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(14px); }
   to   { opacity: 1; transform: translateY(0); }
+}
+
+/* scroll-reveal base state */
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* children of a reveal-list start hidden */
+[data-reveal-list] > * {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+}
+[data-reveal-list] > *.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---- PAGE WRAPPER ---- */
+.page {
+  padding: 24px 20px 140px;
+  max-width: 960px;
+  margin: 0 auto;
+  animation: pageIn 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 /* ---- TYPOGRAPHY ---- */
@@ -112,13 +142,15 @@ nav.site-nav {
   z-index: 2000;
   width: 60px;
   align-items: center;
-  transform: translateY(20px);
+  transform: translateY(12px) scale(0.95);
   opacity: 0;
   visibility: hidden;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.3s;
 }
 nav.site-nav.open {
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
   opacity: 1;
   visibility: visible;
 }
@@ -152,10 +184,14 @@ nav.site-nav.open {
   border: 1px solid var(--border);
   box-shadow: 0 4px 15px rgba(0,0,0,0.05);
   cursor: zoom-in;
-  transition: transform 0.4s ease;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   display: block;
 }
-.gallery-grid img:hover { transform: scale(1.025); }
+.gallery-grid img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.13);
+}
 
 /* ---- LIGHTBOX ---- */
 .lightbox-overlay {
@@ -209,16 +245,18 @@ nav.site-nav.open {
   color: inherit;
   border: 1px solid var(--border);
   box-shadow: var(--shadow);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1);
   height: 200px;
+  will-change: transform;
 }
 .split-card.reverse { flex-direction: row-reverse; }
-.split-card:hover { transform: translateY(-4px); box-shadow: 0 25px 50px rgba(0,0,0,0.1); }
-.split-card:active { transform: scale(0.97); }
+.split-card:hover { transform: translateY(-6px); box-shadow: 0 30px 60px rgba(0,0,0,0.12); }
+.split-card:active { transform: scale(0.97); transition-duration: 0.1s; }
 
 .card-media { width: 40%; overflow: hidden; flex-shrink: 0; }
-.card-media img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
-.split-card:hover .card-media img { transform: scale(1.06); }
+.card-media img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+.split-card:hover .card-media img { transform: scale(1.08); }
 
 .card-media.icon-bg {
   display: flex;
@@ -258,13 +296,16 @@ nav.site-nav.open {
   border: 1px solid var(--border);
   box-shadow: var(--shadow);
   cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   text-decoration: none;
   display: block;
+  will-change: transform;
 }
-.chapter-card:hover { transform: translateY(-5px); box-shadow: 0 25px 45px rgba(0,0,0,0.12); }
-.chapter-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
-.chapter-card:hover img { transform: scale(1.06); }
+.chapter-card:hover { transform: translateY(-7px) scale(1.01); box-shadow: 0 30px 55px rgba(0,0,0,0.14); }
+.chapter-card:active { transform: scale(0.98); transition-duration: 0.1s; }
+.chapter-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
+.chapter-card:hover img { transform: scale(1.08); }
 .chapter-overlay {
   position: absolute;
   inset: auto 0 0 0;
@@ -293,10 +334,11 @@ nav.site-nav.open {
   letter-spacing: 0.3px;
   box-shadow: 0 8px 24px rgba(212,175,55,0.4);
   z-index: 3000;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.rezerva-btn:hover  { transform: translateY(-3px); box-shadow: 0 14px 32px rgba(212,175,55,0.5); }
-.rezerva-btn:active { transform: scale(0.94); }
+.rezerva-btn:hover  { transform: translateY(-4px) scale(1.03); box-shadow: 0 18px 36px rgba(212,175,55,0.55); }
+.rezerva-btn:active { transform: scale(0.93); transition-duration: 0.08s; }
 .rezerva-btn i { font-size: 1.05rem; }
 
 /* ---- BOOKING FORM ---- */

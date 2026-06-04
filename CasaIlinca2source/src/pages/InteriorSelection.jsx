@@ -1,15 +1,17 @@
 import { Link } from 'react-router-dom'
 import Nav from '../components/Nav'
 import { media } from '../media'
+import { useRevealList } from '../hooks/useReveal'
 
 export default function InteriorSelection() {
+  const listRef = useRevealList()
   return (
     <>
       <div className="page">
         <Link to="/spaces" className="back-btn"><i className="fas fa-arrow-left" /> Înapoi</Link>
         <h1>Interior</h1>
         <p className="subtitle" style={{ marginBottom: 40 }}>Alege spațiul pe care vrei să-l explorezi</p>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+        <div ref={listRef} style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
           <Link to="/camere" className="split-card">
             <div className="card-media"><img src={media('cam1_1.jpg')} alt="Camere" /></div>
             <div className="card-content">
