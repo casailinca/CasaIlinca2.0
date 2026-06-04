@@ -1,13 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import emailjs from '@emailjs/browser'
 import Nav from '../components/Nav'
 import SEO from '../components/SEO'
-
-const EMAILJS_SERVICE_ID    = 'service_qgpjw3k'
-const EMAILJS_TEMPLATE_ID   = 'template_1ewtq6s'
-const EMAILJS_OWNER_TEMPLATE = 'template_m1ruixs'
-const EMAILJS_PUBLIC_KEY    = 'INCx8tda9H8L77gGt'
 
 function formatDate(dateStr) {
   if (!dateStr) return ''
@@ -47,10 +41,12 @@ export default function Rezervare() {
     }
 
     try {
-      await Promise.all([
-        emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID,    templateParams, EMAILJS_PUBLIC_KEY),
-        emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_OWNER_TEMPLATE, templateParams, EMAILJS_PUBLIC_KEY),
-      ])
+      const res = await fetch('/api/send', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(templateParams),
+      })
+      if (!res.ok) throw new Error('Server error')
       setStatus('sent')
     } catch {
       setStatus('error')
