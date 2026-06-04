@@ -6,6 +6,10 @@ export default function Nav() {
 
   return (
     <>
+      <Link to="/rezervare" className="rezerva-btn" title="Rezervare">
+        <i className="fas fa-calendar-alt" />
+        <span>Rezervă</span>
+      </Link>
       <button className="menu-toggle" onClick={() => setOpen(o => !o)} aria-label="Meniu">
         <i className={open ? 'fas fa-times' : 'fas fa-bars'} />
       </button>
