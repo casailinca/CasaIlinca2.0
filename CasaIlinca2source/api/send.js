@@ -130,7 +130,7 @@ function ownerHtml({ to_name, to_email, checkin_date, checkout_date, nights, pho
                       </td>
                       <td width="50%">
                         <p style="margin:0;font-size:11px;color:#8e8e93;text-transform:uppercase;letter-spacing:1px;font-weight:600;">Telefon</p>
-                        <a href="tel:${phone}" style="display:block;margin:4px 0 0;font-size:16px;font-weight:600;color:#d4af37;text-decoration:none;">${phone}</a>
+                        <a href="tel:+4${phone.replace(/^0/, '')}" style="display:block;margin:4px 0 0;font-size:16px;font-weight:600;color:#d4af37;text-decoration:none;">${phone}</a>
                       </td>
                     </tr>
                   </table>
@@ -154,7 +154,7 @@ function ownerHtml({ to_name, to_email, checkin_date, checkout_date, nights, pho
                 </td>
                 <td width="4%"></td>
                 <td width="48%">
-                  <a href="tel:${phone}" style="display:block;background:#1d1d1f;color:white;text-decoration:none;padding:16px;border-radius:16px;font-size:14px;font-weight:700;text-align:center;">Sună</a>
+                  <a href="tel:+4${phone.replace(/^0/, '')}" style="display:block;background:#1d1d1f;color:white;text-decoration:none;padding:16px;border-radius:16px;font-size:14px;font-weight:700;text-align:center;">Sună</a>
                 </td>
               </tr>
             </table>
