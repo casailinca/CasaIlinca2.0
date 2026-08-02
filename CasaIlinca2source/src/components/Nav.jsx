@@ -1,18 +1,20 @@
 import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+import { useLang } from '../context/LangContext'
 
 const navItems = [
-  { to: '/',            icon: 'fas fa-house',          label: 'Acasă' },
-  { to: '/description', icon: 'fas fa-feather',         label: 'Poveste' },
-  { to: '/destinations',icon: 'fas fa-mountain',         label: 'Destinații' },
-  { to: '/spaces',      icon: 'fas fa-layer-group',     label: 'Spații' },
-  { to: '/location',    icon: 'fas fa-location-dot',    label: 'Locație' },
-  { to: '/contact',     icon: 'fas fa-envelope',        label: 'Contact' },
+  { to: '/',             icon: 'fas fa-house',         labelKey: 'home' },
+  { to: '/description',  icon: 'fas fa-feather',        labelKey: 'description' },
+  { to: '/destinations', icon: 'fas fa-mountain',       labelKey: 'destinations' },
+  { to: '/spaces',       icon: 'fas fa-layer-group',    labelKey: 'spaces' },
+  { to: '/location',     icon: 'fas fa-location-dot',   labelKey: 'location' },
+  { to: '/contact',      icon: 'fas fa-envelope',       labelKey: 'contact' },
 ]
 
 export default function Nav() {
   const [open, setOpen] = useState(false)
   const { pathname } = useLocation()
+  const { lang, setLang, t } = useLang()
 
   const isActive = (to) =>
     to === '/' ? pathname === '/' : pathname.startsWith(to)
@@ -21,7 +23,7 @@ export default function Nav() {
     <>
       <Link to="/rezervare" className="rezerva-btn" title="Rezervare">
         <i className="fas fa-calendar-check" />
-        <span>Rezervă</span>
+        <span>{t.book}</span>
       </Link>
 
       <button className="menu-toggle" onClick={() => setOpen(o => !o)} aria-label="Meniu">
@@ -29,21 +31,29 @@ export default function Nav() {
       </button>
 
       <nav className={`site-nav${open ? ' open' : ''}`}>
-        {navItems.map(({ to, icon, label }) => {
+        {navItems.map(({ to, icon, labelKey }) => {
           const active = isActive(to)
           return (
             <Link
               key={to}
               to={to}
               className={`nav-item${active ? ' active' : ''}`}
-              title={label}
+              title={t[labelKey]}
               onClick={() => setOpen(false)}
             >
               <i className={icon} />
-              <span className="nav-label">{label}</span>
+              <span className="nav-label">{t[labelKey]}</span>
             </Link>
           )
         })}
+
+        <button
+          className="lang-toggle"
+          onClick={() => { setLang(l => l === 'ro' ? 'en' : 'ro'); setOpen(false) }}
+          title="Switch language"
+        >
+          {lang === 'ro' ? '🇬🇧 EN' : '🇷🇴 RO'}
+        </button>
       </nav>
     </>
   )

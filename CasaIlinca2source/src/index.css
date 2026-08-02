@@ -436,14 +436,58 @@ nav.site-nav.open {
   align-items: center;
   text-align: center;
   gap: 14px;
-  padding: 40px 20px;
+  padding: 40px 24px;
   background: white;
   border-radius: var(--radius);
   border: 1px solid var(--border);
   box-shadow: var(--shadow);
+  animation: pageIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 .booking-success h2 { font-size: 1.5rem; font-weight: 600; }
 .booking-success p  { color: var(--accent); font-size: 0.9rem; line-height: 1.6; }
+.booking-success .book-submit { width: 100%; }
+
+/* ---- SKELETON ---- */
+@keyframes shimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+.img-skeleton {
+  border-radius: inherit;
+  background: linear-gradient(90deg, #e8e8e8 25%, #f2f2f2 50%, #e8e8e8 75%);
+  background-size: 800px 100%;
+  animation: shimmer 1.4s infinite linear;
+}
+
+/* ---- REVIEWS ---- */
+.review-card {
+  background: white;
+  border-radius: 20px;
+  padding: 28px 28px 24px;
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+}
+.review-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.09);
+}
+
+/* ---- LANG TOGGLE ---- */
+.lang-toggle {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 8px 16px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--primary);
+  margin-top: 8px;
+  transition: background 0.2s, color 0.2s;
+  letter-spacing: 1px;
+}
+.lang-toggle:hover { background: var(--primary); color: white; }
 
 /* ---- DESCRIPTION PAGE ---- */
 .description-layout {
