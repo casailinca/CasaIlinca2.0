@@ -4,6 +4,7 @@ import SEO from '../components/SEO'
 import { media } from '../media'
 import { useRevealList } from '../hooks/useReveal'
 import Img from '../components/Img'
+import { useLang } from '../context/LangContext'
 
 const rooms = [
   { id: 1, img: 'cam1_1.jpg', label: 'Camera 1' },
@@ -14,13 +15,14 @@ const rooms = [
 
 export default function CamereSelection() {
   const listRef = useRevealList()
+  const { t } = useLang()
   return (
     <>
       <SEO title="Camere" description="4 dormitoare confortabile cu pat matrimonial la Casa Ilinca, Izvorul Muntelui." />
       <div className="page" style={{ maxWidth: 1040 }}>
-        <Link to="/interior" className="back-btn"><i className="fas fa-arrow-left" /> Înapoi la Interior</Link>
-        <h1>Alege Camera</h1>
-        <p className="subtitle" style={{ marginBottom: 36 }}>4 dormitoare — fiecare cu personalitatea sa</p>
+        <Link to="/interior" className="back-btn"><i className="fas fa-arrow-left" /> {t.backToInterior}</Link>
+        <h1>{t.camerePageTitle}</h1>
+        <p className="subtitle" style={{ marginBottom: 36 }}>{t.camerePageSubtitle}</p>
         <div ref={listRef} style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 24 }}>
           {rooms.map(r => (
             <Link key={r.id} to={`/camera/${r.id}`} className="chapter-card">

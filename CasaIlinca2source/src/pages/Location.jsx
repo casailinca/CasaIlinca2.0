@@ -1,15 +1,17 @@
 import { Link } from 'react-router-dom'
 import Nav from '../components/Nav'
 import SEO from '../components/SEO'
+import { useLang } from '../context/LangContext'
 
 export default function Location() {
+  const { t } = useLang()
   return (
     <>
       <SEO title="Locație" description="Casa Ilinca se află în Str. Izvorul Muntelui Nr. 48A, Izvoru Muntelui, Neamț." />
       <div className="page" style={{ maxWidth: 800 }}>
-        <Link to="/" className="back-btn"><i className="fas fa-chevron-left" /> Înapoi</Link>
-        <h1>Locație</h1>
-        <p className="subtitle">Strada Izvorul Muntelui nr 48A<br />Izvoru Muntelui, Neamț</p>
+        <Link to="/" className="back-btn"><i className="fas fa-chevron-left" /> {t.back}</Link>
+        <h1>{t.locationTitle}</h1>
+        <p className="subtitle">{t.locationSubtitle}</p>
 
         <div className="location-map">
           <iframe
@@ -24,7 +26,7 @@ export default function Location() {
           rel="noopener noreferrer"
           className="nav-btn"
         >
-          <i className="fas fa-location-arrow" /> Pornește Navigația
+          <i className="fas fa-location-arrow" /> {t.getDirections}
         </a>
       </div>
       <Nav />

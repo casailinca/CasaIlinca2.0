@@ -3,6 +3,7 @@ import Nav from '../components/Nav'
 import { media } from '../media'
 import { useRevealList } from '../hooks/useReveal'
 import Img from '../components/Img'
+import { useLang } from '../context/LangContext'
 
 const cameraData = {
   1: { title: 'Camera 1', spec: 'Pat Matrimonial', img: 'cam1_1.jpg', video: 'vid1.mp4', poster: 'cam1_2.JPG' },
@@ -15,15 +16,16 @@ export default function Camera() {
   const { id } = useParams()
   const cam = cameraData[id]
   const gridRef = useRevealList()
+  const { t } = useLang()
   if (!cam) return <p style={{ padding: 40 }}>Camera inexistentă.</p>
 
   return (
     <>
       <div className="page" style={{ maxWidth: 1200 }}>
-        <Link to="/camere" className="back-btn"><i className="fas fa-arrow-left" /> Camere</Link>
+        <Link to="/camere" className="back-btn"><i className="fas fa-arrow-left" /> {t.backToCamere}</Link>
         <h1>{cam.title}</h1>
         <p style={{ color: 'var(--accent)', fontSize: '0.9rem', marginBottom: 30, display: 'flex', alignItems: 'center', gap: 8 }}>
-          <i className="fas fa-bed" /> {cam.spec}
+          <i className="fas fa-bed" /> {t.spec}
         </p>
         <div ref={gridRef} className="camera-grid">
           <div className="camera-media-box">
