@@ -26,6 +26,14 @@ export default function Nav() {
         <span>{t.book}</span>
       </Link>
 
+      <button
+        className="lang-pill"
+        onClick={() => setLang(l => l === 'ro' ? 'en' : 'ro')}
+        title="Switch language"
+      >
+        {lang === 'ro' ? 'EN' : 'RO'}
+      </button>
+
       <button className="menu-toggle" onClick={() => setOpen(o => !o)} aria-label="Meniu">
         <i className={open ? 'fas fa-xmark' : 'fas fa-bars'} />
       </button>
@@ -46,14 +54,6 @@ export default function Nav() {
             </Link>
           )
         })}
-
-        <button
-          className="lang-toggle"
-          onClick={() => { setLang(l => l === 'ro' ? 'en' : 'ro'); setOpen(false) }}
-          title="Switch language"
-        >
-          {lang === 'ro' ? '🇬🇧 EN' : '🇷🇴 RO'}
-        </button>
       </nav>
     </>
   )

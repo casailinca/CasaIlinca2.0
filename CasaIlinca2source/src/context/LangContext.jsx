@@ -65,6 +65,8 @@ export const translations = {
 
     // Contact
     contactTitle: 'Contact',
+    contactSubtitle: 'Suntem la un click distanță pentru orice întrebare.',
+    contactBookings: 'Rezervări', contactQuick: 'Mesaj Rapid', contactNav: 'Navigație',
     callTitle: 'Sună-ne', callDesc: 'Contactează-ne telefonic pentru disponibilitate.',
     whatsappTitle: 'WhatsApp', whatsappDesc: 'Scrie-ne și îți răspundem rapid pe chat.',
     findUsTitle: 'Găsește-ne', findUsDesc: 'Str. Izvorul Muntelui, Nr. 48A, Neamț.',
@@ -146,6 +148,8 @@ export const translations = {
 
     // Contact
     contactTitle: 'Contact',
+    contactSubtitle: 'We\'re just a click away for any question.',
+    contactBookings: 'Bookings', contactQuick: 'Quick Message', contactNav: 'Navigation',
     callTitle: 'Call us', callDesc: 'Contact us by phone for availability.',
     whatsappTitle: 'WhatsApp', whatsappDesc: 'Message us and we\'ll reply quickly on chat.',
     findUsTitle: 'Find us', findUsDesc: 'Str. Izvorul Muntelui, Nr. 48A, Neamț.',
