@@ -47,6 +47,7 @@ export const translations = {
     backToInterior: 'Înapoi la Interior',
 
     // Camera
+    roomWord: 'Camera',
     spec: 'Pat Matrimonial',
     backToCamere: 'Camere',
 
@@ -130,6 +131,7 @@ export const translations = {
     backToInterior: 'Back to Interior',
 
     // Camera
+    roomWord: 'Room',
     spec: 'Double Bed',
     backToCamere: 'Rooms',
 

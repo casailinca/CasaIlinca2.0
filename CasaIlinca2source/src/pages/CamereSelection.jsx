@@ -7,10 +7,10 @@ import Img from '../components/Img'
 import { useLang } from '../context/LangContext'
 
 const rooms = [
-  { id: 1, img: 'cam1_1.jpg', label: 'Camera 1' },
-  { id: 2, img: 'cam2_1.jpg', label: 'Camera 2' },
-  { id: 3, img: 'cam3_1.jpg', label: 'Camera 3' },
-  { id: 4, img: 'cam4_1.jpg', label: 'Camera 4' },
+  { id: 1, img: 'cam1_1.jpg' },
+  { id: 2, img: 'cam2_1.jpg' },
+  { id: 3, img: 'cam3_1.jpg' },
+  { id: 4, img: 'cam4_1.jpg' },
 ]
 
 export default function CamereSelection() {
@@ -26,8 +26,8 @@ export default function CamereSelection() {
         <div ref={listRef} style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 24 }}>
           {rooms.map(r => (
             <Link key={r.id} to={`/camera/${r.id}`} className="chapter-card">
-              <Img src={media(r.img)} alt={r.label} />
-              <div className="chapter-overlay"><h2>{r.label}</h2></div>
+              <Img src={media(r.img)} alt={`${t.roomWord} ${r.id}`} />
+              <div className="chapter-overlay"><h2>{t.roomWord} {r.id}</h2></div>
             </Link>
           ))}
         </div>
