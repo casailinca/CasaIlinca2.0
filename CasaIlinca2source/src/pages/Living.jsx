@@ -4,6 +4,7 @@ import Nav from '../components/Nav'
 import SEO from '../components/SEO'
 import Lightbox from '../components/Lightbox'
 import { media } from '../media'
+import Img from '../components/Img'
 
 const images = ['liv1.jpg', 'liv2.jpg', 'liv3.jpg', 'liv4.jpg', 'liv5.jpg', 'liv6.jpg']
 
@@ -17,7 +18,11 @@ export default function Living() {
         <h1>Living & Bucătărie</h1>
         <p className="subtitle">Spațiu generos pentru relaxare și socializare</p>
         <div className="gallery-grid">
-          {images.map(f => <img key={f} src={media(f)} alt={f} onClick={() => setLightbox(media(f))} />)}
+          {images.map(f => (
+            <span key={f} style={{ display: 'block', cursor: 'pointer' }} onClick={() => setLightbox(media(f))}>
+              <Img src={media(f)} alt={f} />
+            </span>
+          ))}
         </div>
       </div>
       <Lightbox src={lightbox} onClose={() => setLightbox(null)} />

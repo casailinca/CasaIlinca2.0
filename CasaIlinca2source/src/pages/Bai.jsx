@@ -4,6 +4,7 @@ import Nav from '../components/Nav'
 import SEO from '../components/SEO'
 import Lightbox from '../components/Lightbox'
 import { media } from '../media'
+import Img from '../components/Img'
 
 const images = ['bM1.jpg', 'bM2.jpg', 'c_bai.JPG']
 
@@ -17,7 +18,11 @@ export default function Bai() {
         <h1>Băi</h1>
         <p className="subtitle">Dotări moderne și finisaje de calitate</p>
         <div className="gallery-grid">
-          {images.map(f => <img key={f} src={media(f)} alt={f} onClick={() => setLightbox(media(f))} />)}
+          {images.map(f => (
+            <span key={f} style={{ display: 'block', cursor: 'pointer' }} onClick={() => setLightbox(media(f))}>
+              <Img src={media(f)} alt={f} />
+            </span>
+          ))}
         </div>
       </div>
       <Lightbox src={lightbox} onClose={() => setLightbox(null)} />

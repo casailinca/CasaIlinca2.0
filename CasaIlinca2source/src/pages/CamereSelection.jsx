@@ -3,6 +3,7 @@ import Nav from '../components/Nav'
 import SEO from '../components/SEO'
 import { media } from '../media'
 import { useRevealList } from '../hooks/useReveal'
+import Img from '../components/Img'
 
 const rooms = [
   { id: 1, img: 'cam1_1.jpg', label: 'Camera 1' },
@@ -23,7 +24,7 @@ export default function CamereSelection() {
         <div ref={listRef} style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 24 }}>
           {rooms.map(r => (
             <Link key={r.id} to={`/camera/${r.id}`} className="chapter-card">
-              <img src={media(r.img)} alt={r.label} />
+              <Img src={media(r.img)} alt={r.label} />
               <div className="chapter-overlay"><h2>{r.label}</h2></div>
             </Link>
           ))}

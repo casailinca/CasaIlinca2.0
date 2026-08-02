@@ -2,6 +2,7 @@ import { Link, useParams } from 'react-router-dom'
 import Nav from '../components/Nav'
 import { media } from '../media'
 import { useRevealList } from '../hooks/useReveal'
+import Img from '../components/Img'
 
 const cameraData = {
   1: { title: 'Camera 1', spec: 'Pat Matrimonial', img: 'cam1_1.jpg', video: 'vid1.mp4', poster: 'cam1_2.JPG' },
@@ -26,7 +27,7 @@ export default function Camera() {
         </p>
         <div ref={gridRef} className="camera-grid">
           <div className="camera-media-box">
-            <img src={media(cam.img)} alt={cam.title} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+            <Img src={media(cam.img)} alt={cam.title} />
           </div>
           <div className="camera-media-box" style={{ background: '#000' }}>
             <video autoPlay muted loop playsInline controls poster={media(cam.poster)} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}>

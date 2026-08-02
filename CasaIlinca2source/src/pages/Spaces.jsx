@@ -3,6 +3,7 @@ import Nav from '../components/Nav'
 import SEO from '../components/SEO'
 import { media } from '../media'
 import { useRevealList } from '../hooks/useReveal'
+import Img from '../components/Img'
 
 export default function Spaces() {
   const listRef = useRevealList()
@@ -15,7 +16,7 @@ export default function Spaces() {
 
         <div ref={listRef} style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
           <Link to="/exterior" className="split-card">
-            <div className="card-media"><img src={media('c_ext.jpg')} alt="Exterior" /></div>
+            <div className="card-media"><Img src={media('c_ext.jpg')} alt="Exterior" /></div>
             <div className="card-content">
               <span className="card-label">Outdoor</span>
               <h2>Exterior</h2>
@@ -25,7 +26,7 @@ export default function Spaces() {
           </Link>
 
           <Link to="/interior" className="split-card reverse">
-            <div className="card-media"><img src={media('c_int.jpg')} alt="Interior" /></div>
+            <div className="card-media"><Img src={media('c_int.jpg')} alt="Interior" /></div>
             <div className="card-content">
               <span className="card-label">Indoor</span>
               <h2>Interior</h2>

@@ -3,6 +3,7 @@ import Nav from '../components/Nav'
 import SEO from '../components/SEO'
 import { media } from '../media'
 import { useReveal } from '../hooks/useReveal'
+import Img from '../components/Img'
 
 export default function Description() {
   const cardRef = useReveal()
@@ -18,7 +19,7 @@ export default function Description() {
         <p className="subtitle">Povestea de la poalele Ceahlăului</p>
 
         <div className="description-layout">
-          <img
+          <Img
             src={media('c_ext.jpg')}
             alt="Casa Ilinca"
             className="description-img"

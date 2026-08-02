@@ -3,6 +3,7 @@ import Nav from '../components/Nav'
 import SEO from '../components/SEO'
 import { media } from '../media'
 import { useRevealList } from '../hooks/useReveal'
+import Img from '../components/Img'
 
 export default function InteriorSelection() {
   const listRef = useRevealList()
@@ -15,7 +16,7 @@ export default function InteriorSelection() {
         <p className="subtitle" style={{ marginBottom: 40 }}>Alege spațiul pe care vrei să-l explorezi</p>
         <div ref={listRef} style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
           <Link to="/camere" className="split-card">
-            <div className="card-media"><img src={media('cam1_1.jpg')} alt="Camere" /></div>
+            <div className="card-media"><Img src={media('cam1_1.jpg')} alt="Camere" /></div>
             <div className="card-content">
               <span className="card-label">Dormitoare</span>
               <h2>Camere</h2>
@@ -24,7 +25,7 @@ export default function InteriorSelection() {
             </div>
           </Link>
           <Link to="/living" className="split-card reverse">
-            <div className="card-media"><img src={media('liv1.jpg')} alt="Living" /></div>
+            <div className="card-media"><Img src={media('liv1.jpg')} alt="Living" /></div>
             <div className="card-content">
               <span className="card-label">Zonă de zi</span>
               <h2>Living</h2>
@@ -33,7 +34,7 @@ export default function InteriorSelection() {
             </div>
           </Link>
           <Link to="/bai" className="split-card">
-            <div className="card-media"><img src={media('bM1.jpg')} alt="Băi" /></div>
+            <div className="card-media"><Img src={media('bM1.jpg')} alt="Băi" /></div>
             <div className="card-content">
               <span className="card-label">Relaxare</span>
               <h2>Băi</h2>
