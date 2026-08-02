@@ -137,7 +137,7 @@ function ownerHtml({ to_name, to_email, checkin_date, checkout_date, nights, pho
             <table width="100%" cellpadding="0" cellspacing="0">
               <tr>
                 <td bgcolor="#25D366" style="border-radius:16px;background:#25D366;" align="center">
-                  <a href="https://wa.me/4${phone.replace(/^0/, '')}" style="display:inline-block;padding:16px 24px;color:white;text-decoration:none;font-size:14px;font-weight:700;width:100%;box-sizing:border-box;text-align:center;">WhatsApp</a>
+                  <a href="https://wa.me/40${phone.replace(/^0/, '')}" style="display:inline-block;padding:16px 24px;color:white;text-decoration:none;font-size:14px;font-weight:700;width:100%;box-sizing:border-box;text-align:center;">WhatsApp</a>
                 </td>
               </tr>
             </table>
