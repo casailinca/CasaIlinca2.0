@@ -27,7 +27,7 @@ export default function Spaces() {
             </div>
           </Link>
 
-          <Link to="/floorplan" className="split-card reverse">
+          <Link to="/interior" className="split-card reverse">
             <div className="card-media"><Img src={media('c_int.jpg')} alt="Interior" /></div>
             <div className="card-content">
               <span className="card-label">{t.interiorLabel}</span>

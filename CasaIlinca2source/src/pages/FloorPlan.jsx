@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import Nav from '../components/Nav'
 import SEO from '../components/SEO'
 import { useLang } from '../context/LangContext'
@@ -214,6 +214,15 @@ export default function FloorPlan() {
                 </button>
               ))}
             </div>
+
+            <Link to="/3d" style={{
+              marginTop: 28, display: 'inline-flex', alignItems: 'center', gap: 8,
+              color: GOLD, fontWeight: 600, fontSize: '0.9rem', textDecoration: 'none',
+            }}>
+              <i className="fas fa-cube" />
+              {ro ? 'Vezi casa în 3D' : 'View house in 3D'}
+              <i className="fas fa-arrow-right" style={{ fontSize: '0.8rem' }} />
+            </Link>
           </>
         ) : (
           <>

@@ -1,3 +1,4 @@
+import { Suspense, lazy } from 'react'
 import { HashRouter, Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
 import Description from './pages/Description'
@@ -15,6 +16,9 @@ import Location from './pages/Location'
 import Contact from './pages/Contact'
 import Rezervare from './pages/Rezervare'
 
+// Lazy-loaded: pulls in three.js, only needed when someone actually visits /3d
+const House3D = lazy(() => import('./pages/House3D'))
+
 export default function App() {
   return (
     <HashRouter>
@@ -25,6 +29,7 @@ export default function App() {
         <Route path="/spaces" element={<Spaces />} />
         <Route path="/floorplan" element={<FloorPlan />} />
         <Route path="/plan/:roomId" element={<PlanRoomGallery />} />
+        <Route path="/3d" element={<Suspense fallback={null}><House3D /></Suspense>} />
         <Route path="/exterior" element={<Exterior />} />
         <Route path="/interior" element={<InteriorSelection />} />
         <Route path="/camere" element={<CamereSelection />} />
