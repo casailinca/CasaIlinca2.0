@@ -14,15 +14,15 @@ export default function Exterior() {
   const { t } = useLang()
   return (
     <>
-      <SEO title="Exterior" description="Curtea, foișorul și spațiile din aer liber ale Casei Ilinca." />
+      <SEO title="Exterior" description="Curtea, foișorul și spațiile din aer liber ale Casei Ilinca." image={media('ext1.jpg')} />
       <div className="page" style={{ maxWidth: 1200 }}>
         <Link to="/spaces" className="back-btn"><i className="fas fa-arrow-left" /> {t.back}</Link>
         <h1>{t.exteriorPageTitle}</h1>
         <p className="subtitle">{t.exteriorPageSubtitle}</p>
         <div className="gallery-grid">
-          {images.map(f => (
+          {images.map((f, i) => (
             <span key={f} style={{ display: 'block', cursor: 'pointer' }} onClick={() => setLightbox(media(f))}>
-              <Img src={media(f)} alt={f} />
+              <Img src={media(f)} alt={f} eager={i === 0} />
             </span>
           ))}
         </div>

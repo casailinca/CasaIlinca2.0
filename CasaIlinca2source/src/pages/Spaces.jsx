@@ -18,7 +18,7 @@ export default function Spaces() {
 
         <div ref={listRef} style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
           <Link to="/exterior" className="split-card">
-            <div className="card-media"><Img src={media('c_ext.jpg')} alt="Exterior" /></div>
+            <div className="card-media"><Img src={media('c_ext.jpg')} alt="Exterior" eager /></div>
             <div className="card-content">
               <span className="card-label">{t.exteriorLabel}</span>
               <h2>{t.exteriorTitle}</h2>

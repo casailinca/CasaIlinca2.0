@@ -21,7 +21,7 @@ export default function Description() {
         <p className="subtitle">{t.descSubtitle}</p>
 
         <div className="description-layout">
-          <Img src={media('c_ext.jpg')} alt="Casa Ilinca" className="description-img" />
+          <Img src={media('c_ext.jpg')} alt="Casa Ilinca" className="description-img" eager />
 
           <div ref={cardRef} style={{
             background: 'var(--glass)',

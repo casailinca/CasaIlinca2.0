@@ -14,15 +14,15 @@ export default function Living() {
   const { t } = useLang()
   return (
     <>
-      <SEO title="Living & Bucătărie" description="Spațiu generos pentru relaxare și socializare la Casa Ilinca." />
+      <SEO title="Living & Bucătărie" description="Spațiu generos pentru relaxare și socializare la Casa Ilinca." image={media('liv1.jpg')} />
       <div className="page" style={{ maxWidth: 1200 }}>
         <Link to="/interior" className="back-btn"><i className="fas fa-arrow-left" /> {t.backToInterior}</Link>
         <h1>{t.livingPageTitle}</h1>
         <p className="subtitle">{t.livingPageSubtitle}</p>
         <div className="gallery-grid">
-          {images.map(f => (
+          {images.map((f, i) => (
             <span key={f} style={{ display: 'block', cursor: 'pointer' }} onClick={() => setLightbox(media(f))}>
-              <Img src={media(f)} alt={f} />
+              <Img src={media(f)} alt={f} eager={i === 0} />
             </span>
           ))}
         </div>

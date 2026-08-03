@@ -18,15 +18,15 @@ export default function CamereSelection() {
   const { t } = useLang()
   return (
     <>
-      <SEO title="Camere" description="4 dormitoare confortabile cu pat matrimonial la Casa Ilinca, Izvorul Muntelui." />
+      <SEO title="Camere" description="4 dormitoare confortabile cu pat matrimonial la Casa Ilinca, Izvorul Muntelui." image={media('cam1_1.jpg')} />
       <div className="page" style={{ maxWidth: 1040 }}>
         <Link to="/interior" className="back-btn"><i className="fas fa-arrow-left" /> {t.backToInterior}</Link>
         <h1>{t.camerePageTitle}</h1>
         <p className="subtitle" style={{ marginBottom: 36 }}>{t.camerePageSubtitle}</p>
         <div ref={listRef} style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 24 }}>
-          {rooms.map(r => (
+          {rooms.map((r, i) => (
             <Link key={r.id} to={`/camera/${r.id}`} className="chapter-card">
-              <Img src={media(r.img)} alt={`${t.roomWord} ${r.id}`} />
+              <Img src={media(r.img)} alt={`${t.roomWord} ${r.id}`} eager={i === 0} />
               <div className="chapter-overlay"><h2>{t.roomWord} {r.id}</h2></div>
             </Link>
           ))}

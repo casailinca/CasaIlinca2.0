@@ -18,7 +18,7 @@ export default function InteriorSelection() {
         <p className="subtitle" style={{ marginBottom: 40 }}>{t.interiorPageSubtitle}</p>
         <div ref={listRef} style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
           <Link to="/camere" className="split-card">
-            <div className="card-media"><Img src={media('cam1_1.jpg')} alt="Camere" /></div>
+            <div className="card-media"><Img src={media('cam1_1.jpg')} alt="Camere" eager /></div>
             <div className="card-content">
               <span className="card-label">{t.camereLabel}</span>
               <h2>{t.camereTitle}</h2>

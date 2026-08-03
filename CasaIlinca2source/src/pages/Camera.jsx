@@ -1,5 +1,6 @@
 import { Link, useParams } from 'react-router-dom'
 import Nav from '../components/Nav'
+import SEO from '../components/SEO'
 import { media } from '../media'
 import { useRevealList } from '../hooks/useReveal'
 import Img from '../components/Img'
@@ -23,6 +24,11 @@ export default function Camera() {
 
   return (
     <>
+      <SEO
+        title={title}
+        description={`Fotografii și video ${title} — Casa Ilinca, Izvorul Muntelui.`}
+        image={media(cam.img)}
+      />
       <div className="page" style={{ maxWidth: 1200 }}>
         <Link to="/camere" className="back-btn"><i className="fas fa-arrow-left" /> {t.backToCamere}</Link>
         <h1>{title}</h1>
@@ -31,7 +37,7 @@ export default function Camera() {
         </p>
         <div ref={gridRef} className="camera-grid">
           <div className="camera-media-box">
-            <Img src={media(cam.img)} alt={cam.title} />
+            <Img src={media(cam.img)} alt={cam.title} eager />
           </div>
           <div className="camera-media-box" style={{ background: '#000' }}>
             <video autoPlay muted loop playsInline controls poster={media(cam.poster)} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}>

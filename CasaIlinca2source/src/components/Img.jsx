@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-export default function Img({ src, alt = '', style = {}, className = '' }) {
+export default function Img({ src, alt = '', style = {}, className = '', eager = false }) {
   const [loaded, setLoaded] = useState(false)
 
   return (
@@ -12,6 +12,9 @@ export default function Img({ src, alt = '', style = {}, className = '' }) {
         src={src}
         alt={alt}
         className={className}
+        loading={eager ? 'eager' : 'lazy'}
+        decoding="async"
+        fetchPriority={eager ? 'high' : 'auto'}
         onLoad={() => setLoaded(true)}
         style={{
           ...style,

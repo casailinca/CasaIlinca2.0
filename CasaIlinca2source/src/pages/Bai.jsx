@@ -14,15 +14,15 @@ export default function Bai() {
   const { t } = useLang()
   return (
     <>
-      <SEO title="Băi" description="Dotări moderne și finisaje de calitate la Casa Ilinca." />
+      <SEO title="Băi" description="Dotări moderne și finisaje de calitate la Casa Ilinca." image={media('bM1.jpg')} />
       <div className="page" style={{ maxWidth: 1200 }}>
         <Link to="/interior" className="back-btn"><i className="fas fa-arrow-left" /> {t.backToInterior}</Link>
         <h1>{t.baiPageTitle}</h1>
         <p className="subtitle">{t.baiPageSubtitle}</p>
         <div className="gallery-grid">
-          {images.map(f => (
+          {images.map((f, i) => (
             <span key={f} style={{ display: 'block', cursor: 'pointer' }} onClick={() => setLightbox(media(f))}>
-              <Img src={media(f)} alt={f} />
+              <Img src={media(f)} alt={f} eager={i === 0} />
             </span>
           ))}
         </div>
