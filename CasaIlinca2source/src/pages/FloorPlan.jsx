@@ -71,11 +71,11 @@ function LivingRoom({ to, onSelect, label }) {
   )
 }
 
-function Stairs0({ onSelect, label }) {
+function Stairs0({ onSelect, label, to }) {
   const [hov, setHov] = useState(false)
   return (
     <g style={{ cursor: 'pointer' }}
-      onClick={() => onSelect({ label, to: '/living' })}
+      onClick={() => onSelect({ label, to })}
       onMouseEnter={() => setHov(true)}
       onMouseLeave={() => setHov(false)}>
       <rect x={1} y={1} width={253} height={46}
@@ -90,11 +90,11 @@ function Stairs0({ onSelect, label }) {
   )
 }
 
-function Stairs1({ onSelect, label }) {
+function Stairs1({ onSelect, label, to }) {
   const [hov, setHov] = useState(false)
   return (
     <g style={{ cursor: 'pointer' }}
-      onClick={() => onSelect({ label, to: '/living' })}
+      onClick={() => onSelect({ label, to })}
       onMouseEnter={() => setHov(true)}
       onMouseLeave={() => setHov(false)}>
       <rect x={1} y={1} width={185} height={46}
@@ -120,11 +120,11 @@ function Level0Blueprint({ onSelect, lang }) {
       <line x1={255} y1={1}   x2={255} y2={139} stroke={WALL} strokeWidth={1.5}/>
       <line x1={235} y1={139} x2={235} y2={559} stroke={WALL} strokeWidth={1.5}/>
 
-      <Room x={120} y={1} w={135} h={138} label={ro ? 'Baie 1' : 'Bath 1'} to="/bai" onSelect={onSelect}/>
+      <Room x={120} y={1} w={135} h={138} label={ro ? 'Baie 1' : 'Bath 1'} to="/plan/baie1" onSelect={onSelect}/>
       <Room x={255} y={1} w={134} h={138} label={ro ? 'Centrală' : 'Boiler'} muted onSelect={onSelect}/>
-      <LivingRoom to="/living" label={ro ? 'Bucătărie' : 'Kitchen'} onSelect={onSelect}/>
-      <Room x={235} y={139} w={154} h={420} label={ro ? 'Terasă' : 'Terrace'} to="/exterior" dashed onSelect={onSelect}/>
-      <Stairs0 onSelect={onSelect} label={ro ? 'Scări' : 'Stairs'}/>
+      <LivingRoom to="/plan/bucatarie" label={ro ? 'Bucătărie' : 'Kitchen'} onSelect={onSelect}/>
+      <Room x={235} y={139} w={154} h={420} label={ro ? 'Terasă' : 'Terrace'} to="/plan/terasa" dashed onSelect={onSelect}/>
+      <Stairs0 onSelect={onSelect} label={ro ? 'Scări' : 'Stairs'} to="/plan/scari-parter"/>
 
       <text x={374} y={549} fontSize={9} fill={WALL} opacity={0.35} fontFamily="system-ui" style={{ userSelect: 'none' }}>N↑</text>
     </svg>
@@ -146,11 +146,11 @@ function Level1Blueprint({ onSelect, lang }) {
       <line x1={256} y1={109} x2={439} y2={109} stroke={WALL} strokeWidth={1.5}/>
       <line x1={256} y1={313} x2={439} y2={313} stroke={WALL} strokeWidth={1.5}/>
 
-      <Room x={1}   y={47}  w={185} h={232} label={`${rw} 1`} to="/camera/1" onSelect={onSelect}/>
-      <Room x={1}   y={279} w={185} h={279} label={`${rw} 4`} to="/camera/4" onSelect={onSelect}/>
-      <Room x={256} y={1}   w={183} h={108} label={ro ? 'Baie 2' : 'Bath 2'} to="/bai" onSelect={onSelect}/>
-      <Room x={256} y={109} w={183} h={204} label={`${rw} 2`} to="/camera/2" onSelect={onSelect}/>
-      <Room x={256} y={313} w={183} h={245} label={`${rw} 3`} to="/camera/3" onSelect={onSelect}/>
+      <Room x={1}   y={47}  w={185} h={232} label={`${rw} 1`} to="/plan/camera1" onSelect={onSelect}/>
+      <Room x={1}   y={279} w={185} h={279} label={`${rw} 4`} to="/plan/camera4" onSelect={onSelect}/>
+      <Room x={256} y={1}   w={183} h={108} label={ro ? 'Baie 2' : 'Bath 2'} to="/plan/baie2" onSelect={onSelect}/>
+      <Room x={256} y={109} w={183} h={204} label={`${rw} 2`} to="/plan/camera2" onSelect={onSelect}/>
+      <Room x={256} y={313} w={183} h={245} label={`${rw} 3`} to="/plan/camera3" onSelect={onSelect}/>
 
       <g>
         <rect x={186} y={1} width={70} height={558} fill="rgba(0,0,0,0.04)" stroke={WALL} strokeWidth={1}/>
@@ -159,7 +159,7 @@ function Level1Blueprint({ onSelect, lang }) {
           style={{ userSelect: 'none', writingMode: 'tb' }}>{ro ? 'Hol' : 'Hall'}</text>
       </g>
 
-      <Stairs1 onSelect={onSelect} label={ro ? 'Scări' : 'Stairs'}/>
+      <Stairs1 onSelect={onSelect} label={ro ? 'Scări' : 'Stairs'} to="/plan/scari-etaj1"/>
 
       <text x={424} y={550} fontSize={9} fill={WALL} opacity={0.35} fontFamily="system-ui" style={{ userSelect: 'none' }}>N↑</text>
     </svg>
