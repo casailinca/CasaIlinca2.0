@@ -3,14 +3,18 @@ import { useEffect, useCallback } from 'react'
 export default function Lightbox({ images = [], index, onClose, onIndexChange }) {
   const open = index !== null && index !== undefined
   const total = images.length
+  const isFirst = index === 0
+  const isLast = index === total - 1
 
   const goPrev = useCallback(() => {
-    onIndexChange((index - 1 + total) % total)
-  }, [index, total, onIndexChange])
+    if (isFirst) return
+    onIndexChange(index - 1)
+  }, [index, isFirst, onIndexChange])
 
   const goNext = useCallback(() => {
-    onIndexChange((index + 1) % total)
-  }, [index, total, onIndexChange])
+    if (isLast) return
+    onIndexChange(index + 1)
+  }, [index, isLast, onIndexChange])
 
   useEffect(() => {
     if (!open) return
@@ -25,32 +29,27 @@ export default function Lightbox({ images = [], index, onClose, onIndexChange })
 
   if (!open) return null
 
+  const handleImageClick = (e) => {
+    e.stopPropagation()
+    if (total <= 1) return
+    const { left, width } = e.currentTarget.getBoundingClientRect()
+    const clickedRight = e.clientX - left > width / 2
+    if (clickedRight) goNext()
+    else goPrev()
+  }
+
   return (
     <div className="lightbox-overlay" onClick={onClose}>
       <button className="lightbox-close" onClick={onClose} aria-label="Închide">
         <i className="fas fa-times" />
       </button>
 
-      {total > 1 && (
-        <>
-          <button
-            className="lightbox-nav lightbox-prev"
-            onClick={e => { e.stopPropagation(); goPrev() }}
-            aria-label="Poza anterioară"
-          >
-            <i className="fas fa-chevron-left" />
-          </button>
-          <button
-            className="lightbox-nav lightbox-next"
-            onClick={e => { e.stopPropagation(); goNext() }}
-            aria-label="Poza următoare"
-          >
-            <i className="fas fa-chevron-right" />
-          </button>
-        </>
-      )}
-
-      <img src={images[index]} alt="" onClick={e => e.stopPropagation()} />
+      <img
+        src={images[index]}
+        alt=""
+        onClick={handleImageClick}
+        style={{ cursor: total > 1 ? 'pointer' : 'default' }}
+      />
 
       {total > 1 && (
         <div className="lightbox-counter" onClick={e => e.stopPropagation()}>
