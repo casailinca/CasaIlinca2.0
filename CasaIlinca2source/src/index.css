@@ -459,20 +459,6 @@ nav.site-nav.open {
   animation: shimmer 1.4s infinite linear;
 }
 
-/* ---- REVIEWS ---- */
-.review-card {
-  background: white;
-  border-radius: 20px;
-  padding: 28px 28px 24px;
-  border: 1px solid var(--border);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.04);
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
-}
-.review-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 32px rgba(0,0,0,0.09);
-}
-
 /* ---- LANG PILL (always visible) ---- */
 .lang-pill {
   position: fixed;

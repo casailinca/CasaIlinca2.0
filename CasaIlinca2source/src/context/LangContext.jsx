@@ -11,7 +11,6 @@ export const translations = {
 
     // Home
     tagline: 'Natură, liniște și confort la poalele Ceahlăului',
-    reviews: 'Ce spun oaspeții noștri',
 
     // Description
     descTitle: 'Despre Ilinca',
@@ -95,7 +94,6 @@ export const translations = {
 
     // Home
     tagline: 'Nature, tranquility and comfort at the foot of Ceahlău',
-    reviews: 'What our guests say',
 
     // Description
     descTitle: 'About Ilinca',
