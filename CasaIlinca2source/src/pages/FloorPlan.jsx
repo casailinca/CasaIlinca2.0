@@ -79,18 +79,12 @@ function Stairs0({ onSelect, label }) {
       onMouseEnter={() => setHov(true)}
       onMouseLeave={() => setHov(false)}>
       <rect x={1} y={1} width={253} height={46}
-        fill={hov ? 'rgba(212,175,55,0.28)' : 'rgba(220,215,200,0.75)'}
+        fill={hov ? 'rgba(212,175,55,0.16)' : 'rgba(255,255,255,0.7)'}
         stroke={hov ? GOLD : WALL} strokeWidth={hov ? 2.5 : 1.5}
         style={{ transition: 'fill 0.2s, stroke 0.2s' }}/>
-      {[26,51,76,101,126,151,176,201,226].map(x => (
-        <line key={x} x1={x} y1={1} x2={x} y2={47} stroke={hov ? GOLD : WALL} strokeWidth={1} opacity={0.55}/>
-      ))}
-      <line x1={1} y1={47} x2={253} y2={1} stroke={WALL} strokeWidth={1.2} opacity={0.4}/>
-      <line x1={30} y1={38} x2={223} y2={38} stroke={WALL} strokeWidth={1.2} opacity={0.6}/>
-      <polygon points="223,34 230,38 223,42" fill={WALL} opacity={0.6}/>
-      <text x={120} y={18} textAnchor="middle" dominantBaseline="middle"
-        fontSize={8} fontFamily="-apple-system,system-ui,sans-serif"
-        fill={hov ? GOLD : WALL} opacity={hov ? 1 : 0.5}
+      <text x={127} y={24} textAnchor="middle" dominantBaseline="middle"
+        fontSize={11} fontWeight="700" fontFamily="-apple-system,system-ui,sans-serif"
+        fill={hov ? GOLD : WALL}
         style={{ userSelect: 'none', pointerEvents: 'none' }}>{label}</text>
     </g>
   )
@@ -104,18 +98,12 @@ function Stairs1({ onSelect, label }) {
       onMouseEnter={() => setHov(true)}
       onMouseLeave={() => setHov(false)}>
       <rect x={1} y={1} width={185} height={46}
-        fill={hov ? 'rgba(212,175,55,0.28)' : 'rgba(220,215,200,0.75)'}
+        fill={hov ? 'rgba(212,175,55,0.16)' : 'rgba(255,255,255,0.7)'}
         stroke={hov ? GOLD : WALL} strokeWidth={hov ? 2.5 : 1.5}
         style={{ transition: 'fill 0.2s, stroke 0.2s' }}/>
-      {[11,21,31,41].map(y => (
-        <line key={y} x1={1} y1={y} x2={185} y2={y} stroke={hov ? GOLD : WALL} strokeWidth={1} opacity={0.5}/>
-      ))}
-      <line x1={1} y1={46} x2={185} y2={1} stroke={WALL} strokeWidth={1.2} opacity={0.4}/>
-      <line x1={20} y1={36} x2={165} y2={36} stroke={WALL} strokeWidth={1.2} opacity={0.6}/>
-      <polygon points="165,32 172,36 165,40" fill={WALL} opacity={0.6}/>
-      <text x={93} y={18} textAnchor="middle" dominantBaseline="middle"
-        fontSize={8} fontFamily="-apple-system,system-ui,sans-serif"
-        fill={hov ? GOLD : WALL} opacity={hov ? 1 : 0.5}
+      <text x={93} y={24} textAnchor="middle" dominantBaseline="middle"
+        fontSize={11} fontWeight="700" fontFamily="-apple-system,system-ui,sans-serif"
+        fill={hov ? GOLD : WALL}
         style={{ userSelect: 'none', pointerEvents: 'none' }}>{label}</text>
     </g>
   )
