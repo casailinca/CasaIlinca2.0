@@ -15,7 +15,15 @@ function nightsBetween(start, end) {
   return Math.round((new Date(end) - new Date(start)) / 86400000)
 }
 
-const PRICE_PER_NIGHT = 1000
+function pricePerNight(nights) {
+  if (nights === 1) return 1250
+  if (nights === 2) return 1100
+  return 1000
+}
+
+function totalPrice(nights) {
+  return nights * pricePerNight(nights)
+}
 
 export default function Rezervare() {
   const { t, lang } = useLang()
@@ -98,7 +106,7 @@ export default function Rezervare() {
                 </div>
                 <div>
                   <p style={{ fontSize: '0.7rem', color: 'var(--accent)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: 4 }}>{t.totalPrice}</p>
-                  <p style={{ fontWeight: 700, color: 'var(--gold)', fontSize: '0.95rem' }}>{nights * PRICE_PER_NIGHT} lei</p>
+                  <p style={{ fontWeight: 700, color: 'var(--gold)', fontSize: '0.95rem' }}>{totalPrice(nights)} lei</p>
                 </div>
               </div>
             </div>
@@ -147,7 +155,7 @@ export default function Rezervare() {
                   {formatDate(checkin, lang)} → {formatDate(checkout, lang)}
                 </span>
                 <span style={{ marginLeft: 10, fontWeight: 700, color: 'var(--gold)' }}>
-                  · {nights * PRICE_PER_NIGHT} lei
+                  · {totalPrice(nights)} lei ({pricePerNight(nights)} lei/{nights === 1 ? t.nights : t.nightsPlural})
                 </span>
               </div>
             )}
