@@ -9,8 +9,10 @@ import { useLang } from '../context/LangContext'
 
 const images = ['liv1.jpg', 'liv2.jpg', 'liv3.jpg', 'liv4.jpg', 'liv5.jpg', 'liv6.jpg']
 
+const imageUrls = images.map(media)
+
 export default function Living() {
-  const [lightbox, setLightbox] = useState(null)
+  const [lightboxIndex, setLightboxIndex] = useState(null)
   const { t } = useLang()
   return (
     <>
@@ -21,13 +23,13 @@ export default function Living() {
         <p className="subtitle">{t.livingPageSubtitle}</p>
         <div className="gallery-grid">
           {images.map((f, i) => (
-            <span key={f} style={{ display: 'block', cursor: 'pointer' }} onClick={() => setLightbox(media(f))}>
+            <span key={f} style={{ display: 'block', cursor: 'pointer' }} onClick={() => setLightboxIndex(i)}>
               <Img src={media(f)} alt={f} eager={i === 0} />
             </span>
           ))}
         </div>
       </div>
-      <Lightbox src={lightbox} onClose={() => setLightbox(null)} />
+      <Lightbox images={imageUrls} index={lightboxIndex} onIndexChange={setLightboxIndex} onClose={() => setLightboxIndex(null)} />
       <Nav />
     </>
   )

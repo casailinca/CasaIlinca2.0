@@ -9,8 +9,10 @@ import { useLang } from '../context/LangContext'
 
 const images = ['ext1.jpg', 'ext2.jpg', 'ext3.jpg', 'ext4.jpg']
 
+const imageUrls = images.map(media)
+
 export default function Exterior() {
-  const [lightbox, setLightbox] = useState(null)
+  const [lightboxIndex, setLightboxIndex] = useState(null)
   const { t } = useLang()
   return (
     <>
@@ -21,13 +23,13 @@ export default function Exterior() {
         <p className="subtitle">{t.exteriorPageSubtitle}</p>
         <div className="gallery-grid">
           {images.map((f, i) => (
-            <span key={f} style={{ display: 'block', cursor: 'pointer' }} onClick={() => setLightbox(media(f))}>
+            <span key={f} style={{ display: 'block', cursor: 'pointer' }} onClick={() => setLightboxIndex(i)}>
               <Img src={media(f)} alt={f} eager={i === 0} />
             </span>
           ))}
         </div>
       </div>
-      <Lightbox src={lightbox} onClose={() => setLightbox(null)} />
+      <Lightbox images={imageUrls} index={lightboxIndex} onIndexChange={setLightboxIndex} onClose={() => setLightboxIndex(null)} />
       <Nav />
     </>
   )
