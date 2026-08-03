@@ -15,6 +15,8 @@ function nightsBetween(start, end) {
   return Math.round((new Date(end) - new Date(start)) / 86400000)
 }
 
+const PRICE_PER_NIGHT = 1000
+
 export default function Rezervare() {
   const { t, lang } = useLang()
   const [checkin, setCheckin]   = useState('')
@@ -94,6 +96,10 @@ export default function Rezervare() {
                   <p style={{ fontSize: '0.7rem', color: 'var(--accent)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: 4 }}>{t.yourName}</p>
                   <p style={{ fontWeight: 600, color: 'var(--primary)', fontSize: '0.95rem' }}>{name}</p>
                 </div>
+                <div>
+                  <p style={{ fontSize: '0.7rem', color: 'var(--accent)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: 4 }}>{t.totalPrice}</p>
+                  <p style={{ fontWeight: 700, color: 'var(--gold)', fontSize: '0.95rem' }}>{nights * PRICE_PER_NIGHT} lei</p>
+                </div>
               </div>
             </div>
 
@@ -139,6 +145,9 @@ export default function Rezervare() {
                 <i className="fas fa-moon" /> {nights} {nights === 1 ? t.nights : t.nightsPlural}
                 <span style={{ opacity: 0.55, marginLeft: 10, fontSize: '0.8rem' }}>
                   {formatDate(checkin, lang)} → {formatDate(checkout, lang)}
+                </span>
+                <span style={{ marginLeft: 10, fontWeight: 700, color: 'var(--gold)' }}>
+                  · {nights * PRICE_PER_NIGHT} lei
                 </span>
               </div>
             )}
