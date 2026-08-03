@@ -139,7 +139,7 @@ function Level1Blueprint({ onSelect, lang }) {
       style={{ maxWidth: 680, display: 'block', margin: '0 auto', borderRadius: 12, background: 'rgba(245,245,247,0.4)' }}>
       <rect x={1} y={1} width={185} height={558} fill="none" stroke={WALL} strokeWidth={2.5}/>
       <rect x={256} y={1} width={183} height={557} fill="none" stroke={WALL} strokeWidth={2.5}/>
-      <line x1={186} y1={1}   x2={186} y2={559} stroke={WALL} strokeWidth={1.5}/>
+      <line x1={186} y1={47}  x2={186} y2={559} stroke={WALL} strokeWidth={1.5}/>
       <line x1={256} y1={1}   x2={256} y2={559} stroke={WALL} strokeWidth={1.5}/>
       <line x1={1}   y1={47}  x2={186} y2={47}  stroke={WALL} strokeWidth={1.5}/>
       <line x1={1}   y1={279} x2={186} y2={279} stroke={WALL} strokeWidth={1.5}/>
