@@ -6,7 +6,7 @@ export const translations = {
   ro: {
     // Nav
     home: 'Acasă', description: 'Descriere', destinations: 'Destinații',
-    spaces: 'Spații', location: 'Locație', contact: 'Contact', book: 'Rezervă',
+    spaces: 'Spații', floorplan: 'Plan', location: 'Locație', contact: 'Contact', book: 'Rezervă',
     back: 'Înapoi',
 
     // Home
@@ -90,7 +90,7 @@ export const translations = {
   en: {
     // Nav
     home: 'Home', description: 'About', destinations: 'Destinations',
-    spaces: 'Spaces', location: 'Location', contact: 'Contact', book: 'Book',
+    spaces: 'Spaces', floorplan: 'Plan', location: 'Location', contact: 'Contact', book: 'Book',
     back: 'Back',
 
     // Home

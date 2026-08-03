@@ -7,6 +7,7 @@ const navItems = [
   { to: '/description',  icon: 'fas fa-feather',        labelKey: 'description' },
   { to: '/destinations', icon: 'fas fa-mountain',       labelKey: 'destinations' },
   { to: '/spaces',       icon: 'fas fa-layer-group',    labelKey: 'spaces' },
+  { to: '/floorplan',   icon: 'fas fa-vector-square',  labelKey: 'floorplan' },
   { to: '/location',     icon: 'fas fa-location-dot',   labelKey: 'location' },
   { to: '/contact',      icon: 'fas fa-envelope',       labelKey: 'contact' },
 ]
