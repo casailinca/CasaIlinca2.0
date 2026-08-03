@@ -71,36 +71,52 @@ function LivingRoom({ to, onSelect, label }) {
   )
 }
 
-function Stairs0() {
+function Stairs0({ onSelect, label }) {
+  const [hov, setHov] = useState(false)
   return (
-    <g style={{ pointerEvents: 'none' }}>
-      <rect x={1} y={1} width={253} height={46} fill="rgba(220,215,200,0.75)" stroke={WALL} strokeWidth={1.5}/>
+    <g style={{ cursor: 'pointer' }}
+      onClick={() => onSelect({ label, to: '/living' })}
+      onMouseEnter={() => setHov(true)}
+      onMouseLeave={() => setHov(false)}>
+      <rect x={1} y={1} width={253} height={46}
+        fill={hov ? 'rgba(212,175,55,0.28)' : 'rgba(220,215,200,0.75)'}
+        stroke={hov ? GOLD : WALL} strokeWidth={hov ? 2.5 : 1.5}
+        style={{ transition: 'fill 0.2s, stroke 0.2s' }}/>
       {[26,51,76,101,126,151,176,201,226].map(x => (
-        <line key={x} x1={x} y1={1} x2={x} y2={47} stroke={WALL} strokeWidth={1} opacity={0.55}/>
+        <line key={x} x1={x} y1={1} x2={x} y2={47} stroke={hov ? GOLD : WALL} strokeWidth={1} opacity={0.55}/>
       ))}
       <line x1={1} y1={47} x2={253} y2={1} stroke={WALL} strokeWidth={1.2} opacity={0.4}/>
       <line x1={30} y1={38} x2={223} y2={38} stroke={WALL} strokeWidth={1.2} opacity={0.6}/>
       <polygon points="223,34 230,38 223,42" fill={WALL} opacity={0.6}/>
       <text x={120} y={18} textAnchor="middle" dominantBaseline="middle"
         fontSize={8} fontFamily="-apple-system,system-ui,sans-serif"
-        fill={WALL} opacity={0.5} style={{ userSelect: 'none' }}>Scări</text>
+        fill={hov ? GOLD : WALL} opacity={hov ? 1 : 0.5}
+        style={{ userSelect: 'none', pointerEvents: 'none' }}>{label}</text>
     </g>
   )
 }
 
-function Stairs1() {
+function Stairs1({ onSelect, label }) {
+  const [hov, setHov] = useState(false)
   return (
-    <g style={{ pointerEvents: 'none' }}>
-      <rect x={1} y={1} width={185} height={46} fill="rgba(220,215,200,0.75)" stroke={WALL} strokeWidth={1.5}/>
+    <g style={{ cursor: 'pointer' }}
+      onClick={() => onSelect({ label, to: '/living' })}
+      onMouseEnter={() => setHov(true)}
+      onMouseLeave={() => setHov(false)}>
+      <rect x={1} y={1} width={185} height={46}
+        fill={hov ? 'rgba(212,175,55,0.28)' : 'rgba(220,215,200,0.75)'}
+        stroke={hov ? GOLD : WALL} strokeWidth={hov ? 2.5 : 1.5}
+        style={{ transition: 'fill 0.2s, stroke 0.2s' }}/>
       {[11,21,31,41].map(y => (
-        <line key={y} x1={1} y1={y} x2={185} y2={y} stroke={WALL} strokeWidth={1} opacity={0.5}/>
+        <line key={y} x1={1} y1={y} x2={185} y2={y} stroke={hov ? GOLD : WALL} strokeWidth={1} opacity={0.5}/>
       ))}
       <line x1={1} y1={46} x2={185} y2={1} stroke={WALL} strokeWidth={1.2} opacity={0.4}/>
       <line x1={20} y1={36} x2={165} y2={36} stroke={WALL} strokeWidth={1.2} opacity={0.6}/>
       <polygon points="165,32 172,36 165,40" fill={WALL} opacity={0.6}/>
       <text x={93} y={18} textAnchor="middle" dominantBaseline="middle"
         fontSize={8} fontFamily="-apple-system,system-ui,sans-serif"
-        fill={WALL} opacity={0.5} style={{ userSelect: 'none' }}>Scări</text>
+        fill={hov ? GOLD : WALL} opacity={hov ? 1 : 0.5}
+        style={{ userSelect: 'none', pointerEvents: 'none' }}>{label}</text>
     </g>
   )
 }
@@ -120,7 +136,7 @@ function Level0Blueprint({ onSelect, lang }) {
       <Room x={255} y={1} w={134} h={138} label={ro ? 'Centrală' : 'Boiler'} muted onSelect={onSelect}/>
       <LivingRoom to="/living" label={ro ? 'Bucătărie' : 'Kitchen'} onSelect={onSelect}/>
       <Room x={235} y={139} w={154} h={420} label={ro ? 'Terasă' : 'Terrace'} to="/exterior" dashed onSelect={onSelect}/>
-      <Stairs0 />
+      <Stairs0 onSelect={onSelect} label={ro ? 'Scări' : 'Stairs'}/>
 
       <text x={374} y={549} fontSize={9} fill={WALL} opacity={0.35} fontFamily="system-ui" style={{ userSelect: 'none' }}>N↑</text>
     </svg>
@@ -155,7 +171,7 @@ function Level1Blueprint({ onSelect, lang }) {
           style={{ userSelect: 'none', writingMode: 'tb' }}>{ro ? 'Hol' : 'Hall'}</text>
       </g>
 
-      <Stairs1 />
+      <Stairs1 onSelect={onSelect} label={ro ? 'Scări' : 'Stairs'}/>
 
       <text x={424} y={550} fontSize={9} fill={WALL} opacity={0.35} fontFamily="system-ui" style={{ userSelect: 'none' }}>N↑</text>
     </svg>
