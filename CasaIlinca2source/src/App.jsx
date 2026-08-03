@@ -2,7 +2,7 @@ import { HashRouter, Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
 import Description from './pages/Description'
 import Destinations from './pages/Destinations'
-import FloorPlan from './pages/FloorPlan'
+import Spaces from './pages/Spaces'
 import Exterior from './pages/Exterior'
 import InteriorSelection from './pages/InteriorSelection'
 import CamereSelection from './pages/CamereSelection'
@@ -20,7 +20,7 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/description" element={<Description />} />
         <Route path="/destinations" element={<Destinations />} />
-        <Route path="/spaces" element={<FloorPlan />} />
+        <Route path="/spaces" element={<Spaces />} />
         <Route path="/exterior" element={<Exterior />} />
         <Route path="/interior" element={<InteriorSelection />} />
         <Route path="/camere" element={<CamereSelection />} />
